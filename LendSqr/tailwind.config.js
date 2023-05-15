@@ -10,7 +10,6 @@ export default {
         background: "#FFF",
         primaryColor: "#213F7D",
         textColor: "#545F7D",
-        inputFeld: "#545F7D",
         secondaryColor: "#39CDCC",
         sidebarLinks: "#213F7D",
         blacklist: "#E4033B",
