@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&family=Work+Sans:wght@100;200;300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Work Sans', sans-serif;
+}
+
+@font-face {
+  font-family: "AvenirNext";
+  src: local("AvenirNext"),
+  url("./fonts/AvenirNextLTPro-Regular.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "SF-Compact-Display";
+  src: local("SF-Compact-Display"),
+  url("./fonts/SF-Compact-Display-Regular.ttf") format("truetype");
+}
+
+.font-face-an {
+  font-family: "AvenirNext";
+}
+
+.font-face-sc {
+  font-family: "SF-Compact-Display";
+}
