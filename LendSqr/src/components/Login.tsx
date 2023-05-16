@@ -6,8 +6,8 @@ import HeroImg from "../assets/pablo-sign-in 1.svg";
 const Login = () => {
      const [showPassword, setShowPassword] = useState(false);
      const navigate = useNavigate();
-     const login = () => {
-          navigate("/dashboard");
+     const login = ():void => {
+          return navigate("/dashboard");
      }
   return (
     <section className={`p-8 lg:p-[5rem]`}>
