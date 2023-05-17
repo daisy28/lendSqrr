@@ -9,3 +9,15 @@
 ._nav::-webkit-scrollbar-thumb {
      background-color: #fff;
 }
+
+._section_width {
+     width: calc(100% - 60px);
+}
+
+._section_width_resize {
+     width: calc(100% - 240px);
+}
+
+._content {
+     overflow-x: scroll !important;
+}

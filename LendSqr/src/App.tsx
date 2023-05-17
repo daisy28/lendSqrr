@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import UserDetails from "./components/Userdetails";
@@ -5,9 +6,17 @@ import UserPage from "./components/Userpage";
 import { createHashRouter, RouterProvider, Outlet } from "react-router-dom";
 
 const Layout = () => {
+  const [toggle, setToggle] = useState(false);
+  const handleToggle = ():boolean => {
+    setToggle(prevToggle => {return !prevToggle});
+    return toggle
+  }
   return (
     <>
-      <Dashboard />
+      <Dashboard
+        toggle={toggle}
+        handletoggle={handleToggle}
+      />
       <Outlet />
     </>
   )

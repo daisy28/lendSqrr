@@ -9,16 +9,15 @@ import CustomerData from "../lib/customers";
 import BusinessData from "../lib/business";
 import SettingsData from "../lib/settings";
 import style from "./style.module.css";
-import { useState } from "react";
 
-const Dashboard = () => {
-const [toggle, setToggle] = useState(false);
+const Dashboard = ({...props}) => {
+  const { toggle, handletoggle } = props;
 
   return (
-    <section>
+    <section className={``}>
       <div>
         <div
-          className={`h-[100px] p-4 flex justify-between items-center shadow-sm fixed w-full right-0 top-0 left-0 z-40`}
+          className={`bg-[#fff] h-[100px] p-4 flex justify-between items-center shadow-sm fixed w-full right-0 top-0 left-0 z-40`}
         >
           <div className={`w-16 md:w-[20%]`}>
             <img src={Logo} alt="" />
@@ -66,13 +65,13 @@ const [toggle, setToggle] = useState(false);
         </div>
 
           <div
-            className={`${style._nav} ${toggle ? `w-[240px]` : `w-[60px]`} fixed overflow-y-scroll overflow-x-hidden top-[100px] bottom-0 left-0 z-10`}
+            className={`${style._nav} ${toggle ? `w-[240px]` : `w-[60px]`} bg-[#fff] shadow-sm fixed overflow-y-scroll overflow-x-hidden top-[100px] bottom-0 left-0 z-20`}
           >
           <MdArrowDropDown
               className={`${toggle ? `left-[220px] rotate-90` : `left-[40px] -rotate-90`} w-[25px] h-[25px]  text-primaryColor cursor-pointer fixed top-[100px]`}
-              onClick={() => setToggle(prevState => !prevState)}
+              onClick={handletoggle}
             />
-            <div className={`bg-[rgba(255,255,255,0.05)] p-4 `}>
+            <div className={`bg-[rgba(255,255,255,0.05)] p-4`}>
             <div className={`${toggle ? `block` : `hidden`} relative mt-10 w-full mb-10 md:hidden`}>
             <input
               type="text"
@@ -123,7 +122,7 @@ const [toggle, setToggle] = useState(false);
                 {CustomerData.map((data) => {
                   return (
                     <div className={`flex items-center mb-6`}>
-                      <Link to="/" className={`flex items-center`}>
+                      <Link to={data.route} className={`flex items-center`}>
                         <img src={data.img} alt="" />
                         <p
                           className={`${toggle ? `block` : `hidden`} font-Work Sans text-primaryColor text-[16px] leading-[19px] ml-2`}
@@ -138,7 +137,7 @@ const [toggle, setToggle] = useState(false);
 
               <div>
                 <p
-                  className={`${toggle ? `text-[12px]` : `text-[.4rem]`} uppercase text-textColor font-[500] text-[12px] leading-[14px] mb-6`}
+                  className={`${toggle ? `text-[12px]` : `text-[.4rem]`} uppercase text-textColor font-[500] leading-[14px] mb-6`}
                 >
                   Businesses
                 </p>
@@ -161,7 +160,7 @@ const [toggle, setToggle] = useState(false);
               </div>
               <div>
                 <p
-                  className={`${toggle ? `text-[12px]` : `text-[.4rem]`} uppercase text-textColor font-[500] text-[12px] leading-[14px] mb-6`}
+                  className={`${toggle ? `text-[12px]` : `text-[.4rem]`} uppercase text-textColor font-[500] leading-[14px] mb-6`}
                 >
                   Settings
                 </p>

@@ -11,34 +11,42 @@ const Customers = [
   {
     img: User,
     link: "Users",
+    route: "/dashboard"
   },
   {
     img: Guarantor,
     link: "Guarantors",
+    route: "guarantors"
   },
   {
     img: Loans,
     link: "Loans",
+    route: "loans"
   },
   {
     img: Decision,
     link: "Decision Models",
+    route: "decision-models"
   },
   {
     img: Savings,
     link: "Savings",
+    route: "savings"
   },
   {
     img: LoanRequest,
     link: "Loan Requests",
+    route: "loan-request"
   },
   {
     img: Whitelist,
     link: "Whitelists",
+    route: "whitelist"
   },
   {
     img: Karma,
     link: "Karma",
+    route: "karma"
   },
 ];
 
