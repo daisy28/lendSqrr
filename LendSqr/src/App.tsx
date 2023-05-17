@@ -1,6 +1,17 @@
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
-import { createHashRouter, RouterProvider } from "react-router-dom";
+import UserDetails from "./components/Userdetails";
+import UserPage from "./components/Userpage";
+import { createHashRouter, RouterProvider, Outlet } from "react-router-dom";
+
+const Layout = () => {
+  return (
+    <>
+      <Dashboard />
+      <Outlet />
+    </>
+  )
+}
 
 function App() {
   const router = createHashRouter(
@@ -11,7 +22,17 @@ function App() {
       },
       {
         path: "/dashboard",
-        element: <Dashboard />
+        element: <Layout />,
+        children: [
+          {
+            index: true,
+            element: <UserDetails />
+          },
+          {
+            path: "user-page",
+            element: <UserPage />
+          },
+        ]
       }
     ]
   )

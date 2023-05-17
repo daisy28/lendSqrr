@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import CustomerData from "../lib/customers";
 import BusinessData from "../lib/business";
 import SettingsData from "../lib/settings";
+import style from "./style.module.css";
 import { useState } from "react";
 
 const Dashboard = () => {
@@ -65,7 +66,7 @@ const [toggle, setToggle] = useState(false);
         </div>
 
           <div
-            className={`${toggle ? `w-[240px]` : `w-[60px]`} fixed overflow-y-scroll top-[100px] bottom-0 left-0 z-10`}
+            className={`${style._nav} ${toggle ? `w-[240px]` : `w-[60px]`} fixed overflow-y-scroll overflow-x-hidden top-[100px] bottom-0 left-0 z-10`}
           >
           <MdArrowDropDown
               className={`${toggle ? `left-[220px] rotate-90` : `left-[40px] -rotate-90`} w-[25px] h-[25px]  text-primaryColor cursor-pointer fixed top-[100px]`}
