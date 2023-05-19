@@ -121,7 +121,7 @@ const Dashboard = ({...props}) => {
               <div className={`mb-10`}>
                 {CustomerData.map((data) => {
                   return (
-                    <div className={`flex items-center mb-6`}>
+                    <div className={`flex items-center mb-6`} key={data.link}>
                       <Link to={data.route} className={`flex items-center`}>
                         <img src={data.img} alt="" />
                         <p
@@ -145,7 +145,7 @@ const Dashboard = ({...props}) => {
               <div className={`mb-10`}>
                 {BusinessData.map((data) => {
                   return (
-                    <div className={`flex items-center mb-6`}>
+                    <div className={`flex items-center mb-6`} key={data.link}>
                       <Link to="/" className={`flex items-center`}>
                         <img src={data.img} alt="" />
                         <p
@@ -168,7 +168,7 @@ const Dashboard = ({...props}) => {
               <div>
                 {SettingsData.map((data) => {
                   return (
-                    <div className={`flex items-center mb-6`}>
+                    <div className={`flex items-center mb-6`} key={data.link}>
                       <Link to="/" className={`flex items-center`}>
                         <img src={data.img} alt="" />
                         <p

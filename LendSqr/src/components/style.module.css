@@ -21,3 +21,17 @@
 ._content {
      overflow-x: scroll !important;
 }
+
+._content::-webkit-scrollbar {
+     height: 10px;
+     width: 10px;
+}
+
+._content::-webkit-scrollbar-track {
+     background-color: #f0eaea;
+}
+
+._content::-webkit-scrollbar-thumb {
+     border-radius: 3px;
+     background-color: #d1cccc;
+}

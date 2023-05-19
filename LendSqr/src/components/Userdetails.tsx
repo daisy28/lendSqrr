@@ -1,8 +1,35 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
 import style from "./style.module.css";
 import UserInfo from "../lib/userInfo";
-import tableHeading from "../lib/tableHeading";
+import Icon from "../assets/Vector (3).svg";
+import Menu from "../assets/Vector (4).svg";
+
 const UserDetails = ({...props}) => {
-  const { toggle } = props;
+     const { toggle } = props;
+     const [users, setUsers] = useState<[]>([]);
+     const getUsers = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users`;
+     // const getUserDetailsById = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/:id`;
+     
+     useEffect(() => {
+          axios.get(getUsers)
+               .then((data) => {
+                    console.log(data.data)
+                     setUsers(data.data)
+               })
+               .catch(err => console.log(err))
+     }, [getUsers])
+     
+     interface User {
+          userName: string;
+          email: string;
+          profile: object;
+          phoneNumber: string;
+          createdAt: string;
+          id: number;
+          orgName: string;
+          lastActiveDate: string
+     }
      
 
      return (
@@ -20,23 +47,50 @@ const UserDetails = ({...props}) => {
                </div>)})}
                </div>
 
-               <div className={`${style._content} bg-[#fff] rounded-[4px] shadow-md border-[1px] border-[rgba(125, 125, 125, 0.06)] p-4`}>
-                         <div className={`w-[1000px]`}>
-                              <div className={`flex justify-between relative`}>
-                                   {tableHeading.map(heading => {
-                                        return <div className={``}>
-                                             <div className={`flex items-center`} key={heading.header}>
-                                                  <p className={`font-Work Sans font-[600] text-[12px] leading-[14px] uppercase text-textColor`}>{heading.header}</p>
-                                                  <img src={heading.icon} alt="" className={`ml-2`} />
-                                             </div>
-                                             <div className={`py-6 `}>
-                                                  <p>{heading.details}</p>
-                                             </div>
-                                             <div className={`  bg-[#766f6f]`}></div>
+               <div className={`${style._content} bg-[#fff] rounded-[4px] shadow-md border-[1px] border-[rgba(125, 125, 125, 0.06)] p-6`}>
+                         <div className={`w-[1100px]`}>
+                              <div className={`grid grid-cols-7 gap-8 mb-6`}>
+                                        <div className={`flex items-center relative`}>
+                                             <p className={`font-Work Sans font-[600] text-[12px] leading-[14px] uppercase text-textColor`}>Organization</p>
+                                             <img src={Icon} alt="" className={`ml-3 cursor-pointer`} />
                                         </div>
+                                        <div className={`flex items-center relative`}>
+                                             <p className={`font-Work Sans font-[600] text-[12px] leading-[14px] uppercase text-textColor`}>Username</p>
+                                             <img src={Icon} alt="" className={`ml-3 cursor-pointer`} />
+                                        </div>
+                                        <div className={`flex items-center relative`}>
+                                             <p className={`font-Work Sans font-[600] text-[12px] leading-[14px] uppercase text-textColor`}>Email</p>
+                                             <img src={Icon} alt="" className={`ml-3 cursor-pointer`} />
+                                        </div>
+                                        <div className={`flex items-center relative`}>
+                                             <p className={`font-Work Sans font-[600] text-[12px] leading-[14px] uppercase text-textColor`}>Phone Number</p>
+                                             <img src={Icon} alt="" className={`ml-3 cursor-pointer`} />
+                                        </div>
+                                        <div className={`flex items-center relative`}>
+                                             <p className={`font-Work Sans font-[600] text-[12px] leading-[14px] uppercase text-textColor`}>Date Joined</p>
+                                             <img src={Icon} alt="" className={`ml-2 cursor-pointer`} />
+                                        </div>
+                                        <div className={`flex items-center relative`}>
+                                             <p className={`font-Work Sans font-[600] text-[12px] leading-[14px] uppercase text-textColor`}>Status</p>
+                                             <img src={Icon} alt="" className={`ml-3 cursor-pointer`} />
+                                        </div>
+                                   </div>
+                                   {users.map((user:User) => {
+                                        return <div className={``} key={user.id}>
+                                             <div className={`py-6 border-b border-[rgba(33, 63, 125, 0.1)] grid grid-cols-7 gap-8`} key={user.id}>
+                                                  <p className={`font-Work Sans font-[600] text-[12px] leading-[14px] text-textColor`}>{user.orgName}</p>
+                                                  <p className={`font-Work Sans font-[600] text-[12px] leading-[14px] text-textColor`}>{user.userName}</p>
+                                                  <p className={`font-Work Sans font-[600] text-[12px] leading-[14px] text-textColor break-words`}>{user.email}</p>
+                                                  <p className={`font-Work Sans font-[600] text-[12px] leading-[14px] text-textColor`}>{user.profile.phoneNumber}</p>
+                                                  <p className={`font-Work Sans font-[600] text-[12px] leading-[14px] text-textColor`}>{user.createdAt}</p>
+                                                  <p className={`font-Work Sans font-[600] text-[12px] leading-[14px] text-textColor`}>{user.lastActiveDate}</p>
+                                                  <div className={`cursor-pointer`}>
+                                                       <img src={Menu} alt="" />
+                                                  </div>
+                                             </div>
+                                        </div>
+                                        
                                    })}
-                              </div>
-                              
                     </div>
                     </div>
                     <div>
