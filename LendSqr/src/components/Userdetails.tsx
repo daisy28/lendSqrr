@@ -9,7 +9,7 @@ const UserDetails = ({...props}) => {
      const { toggle } = props;
      const [users, setUsers] = useState<[]>([]);
      const getUsers = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users`;
-     // const getUserDetailsById = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/:id`;
+     const getUserDetailsById = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/:id`;
      
      useEffect(() => {
           axios.get(getUsers)
@@ -18,7 +18,17 @@ const UserDetails = ({...props}) => {
                      setUsers(data.data)
                })
                .catch(err => console.log(err))
-     }, [getUsers])
+     }, [getUsers]);
+
+     useEffect(() => {
+          axios.get(getUserDetailsById)
+               .then((data) => {
+                    console.log(data.data)
+                    setUsers(data.data)
+               })
+               .catch(err => console.log(err))
+     }, [getUserDetailsById])
+
      
      interface User {
           userName: string;
