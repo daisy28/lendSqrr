@@ -4,12 +4,30 @@ import style from "./style.module.css";
 import UserInfo from "../lib/userInfo";
 import Icon from "../assets/Vector (3).svg";
 import Menu from "../assets/Vector (4).svg";
+import Paginate from "./Paginate";
 
 const UserDetails = ({...props}) => {
      const { toggle } = props;
      const [users, setUsers] = useState<[]>([]);
+     const [currentPage, setCurrentPage] = useState(1);
+     const [infoPerPage] = useState(10);
+     const indexOfLastInfo = currentPage * infoPerPage;
+     const indexOfFirstInfo = indexOfLastInfo - infoPerPage;
+     const currentPageInfo = users.slice(indexOfFirstInfo, indexOfLastInfo);
+     const numberOfPages = Math.ceil(users.length / infoPerPage)
+     const nextPage = () => {
+          if(currentPage !== numberOfPages){
+               setCurrentPage(currentPage + 1);
+          }
+     }
+     const prevPage = () => {
+          if(currentPage !== 1){
+               setCurrentPage(currentPage - 1);
+          }
+     }
+
      const getUsers = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users`;
-     const getUserDetailsById = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/:id`;
+     // const getUserDetailsById = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/:id`;
      
      useEffect(() => {
           axios.get(getUsers)
@@ -20,20 +38,9 @@ const UserDetails = ({...props}) => {
                .catch(err => console.log(err))
      }, [getUsers]);
 
-     useEffect(() => {
-          axios.get(getUserDetailsById)
-               .then((data) => {
-                    console.log(data.data)
-                    setUsers(data.data)
-               })
-               .catch(err => console.log(err))
-     }, [getUserDetailsById])
-
-     
      interface User {
           userName: string;
           email: string;
-          profile: object;
           phoneNumber: string;
           createdAt: string;
           id: number;
@@ -85,16 +92,16 @@ const UserDetails = ({...props}) => {
                                              <img src={Icon} alt="" className={`ml-3 cursor-pointer`} />
                                         </div>
                                    </div>
-                                   {users.map((user:User) => {
+                                   {currentPageInfo.map((user:User) => {
                                         return <div className={``} key={user.id}>
                                              <div className={`py-6 border-b border-[rgba(33, 63, 125, 0.1)] grid grid-cols-7 gap-8`} key={user.id}>
-                                                  <p className={`font-Work Sans font-[600] text-[12px] leading-[14px] text-textColor`}>{user.orgName}</p>
-                                                  <p className={`font-Work Sans font-[600] text-[12px] leading-[14px] text-textColor`}>{user.userName}</p>
-                                                  <p className={`font-Work Sans font-[600] text-[12px] leading-[14px] text-textColor break-words`}>{user.email}</p>
-                                                  <p className={`font-Work Sans font-[600] text-[12px] leading-[14px] text-textColor`}>{user.profile.phoneNumber}</p>
-                                                  <p className={`font-Work Sans font-[600] text-[12px] leading-[14px] text-textColor`}>{user.createdAt}</p>
-                                                  <p className={`font-Work Sans font-[600] text-[12px] leading-[14px] text-textColor`}>{user.lastActiveDate}</p>
-                                                  <div className={`cursor-pointer`}>
+                                                  <p className={`font-Work Sans font-[400] text-[12px] leading-[14px] text-textColor`}>{user.orgName}</p>
+                                                  <p className={`font-Work Sans font-[400] text-[12px] leading-[14px] text-textColor`}>{user.userName}</p>
+                                                  <p className={`font-Work Sans font-[400] text-[12px] leading-[14px] text-textColor break-words`}>{user.email}</p>
+                                                  <p className={`font-Work Sans font-[400] text-[12px] leading-[14px] text-textColor`}>{user.phoneNumber}</p>
+                                                  <p className={`font-Work Sans font-[400] text-[12px] leading-[14px] text-textColor`}>({user.createdAt})</p>
+                                                  <p className={`font-Work Sans font-[400] text-[12px] leading-[14px] text-textColor`}>({user.lastActiveDate})</p>
+                                                  <div className={`cursor-pointer mt-3`}>
                                                        <img src={Menu} alt="" />
                                                   </div>
                                              </div>
@@ -104,7 +111,14 @@ const UserDetails = ({...props}) => {
                     </div>
                     </div>
                     <div>
-                         lorem
+                         <Paginate
+                              numberOfPages={numberOfPages}
+                              currentPage={currentPage}
+                              setCurrentPage={setCurrentPage}
+                              nextPage={nextPage}
+                              prevPage={prevPage}
+                              currentPageInfo={currentPageInfo}
+                         />
                     </div>
                </div>
                
