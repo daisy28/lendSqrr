@@ -33,7 +33,6 @@ const UserDetails = ({ ...props }) => {
     axios
       .get(getUsers)
       .then((data) => {
-        console.log(data.data);
         setUsers(data.data);
       })
       .catch((err) => console.log(err));
@@ -43,7 +42,8 @@ const UserDetails = ({ ...props }) => {
     userName: string;
     email: string;
     phoneNumber: string;
-    createdAt: string;
+    date: object;
+    createdAt: Date;
     id: number;
     orgName: string;
     lastActiveDate: string;
@@ -172,12 +172,19 @@ const UserDetails = ({ ...props }) => {
                     <p
                       className={`font-Work Sans font-[400] text-[12px] leading-[14px] text-textColor`}
                     >
-                      ({user.createdAt})
+                      {new Date(user.createdAt).toDateString()} 10: 00 AM
                     </p>
                     <p
-                      className={`font-Work Sans font-[400] text-[12px] leading-[14px] text-textColor`}
+                    className={`font-Work Sans font-[400] text-[14px] leading-[16px] text-textColor 
+                      ${new Date(user.createdAt).getFullYear() < 2010 ? `bg-[rgba(228,3,59,0.1)] text-[#e4033b] text-center rounded-[100px] flex items-center justify-center` : null} 
+                      ${new Date(user.createdAt).getFullYear() < 2030 ? `bg-[rgba(84,95,125,0.06)] text-[#545F7D] text-center rounded-[100px] flex items-center justify-center` : null} 
+                      ${new Date(user.createdAt).getFullYear() <= 2089 ? `bg-[rgba(57,205,99,0.06)] text-[#39CD62] text-center rounded-[100px] flex items-center justify-center` : null} 
+                      ${new Date(user.createdAt).getFullYear() > 2089 ? `bg-[rgba(233,179,0,0.1)] text-[#E9B200] text-center rounded-[100px] flex items-center justify-center` : null}`}
                     >
-                      ({user.lastActiveDate})
+                      {new Date(user.createdAt).getFullYear() < 2010 ? `Blacklisted` : `` 
+                      || new Date(user.createdAt).getFullYear() < 2030 ? `Inactive` : ``
+                      || new Date(user.createdAt).getFullYear() <= 2089 ? `Active` : ``  
+                      || new Date(user.createdAt).getFullYear() > 2089 ? `Pending` : `` }
                     </p>
                     <div className={`cursor-pointer mt-3`}>
                       <img src={Menu} alt="" />

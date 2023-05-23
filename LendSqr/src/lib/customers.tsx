@@ -16,37 +16,37 @@ const Customers = [
   {
     img: Guarantor,
     link: "Guarantors",
-    route: "guarantors"
+    route: "/dashboard/guarantors"
   },
   {
     img: Loans,
     link: "Loans",
-    route: "loans"
+    route: "/dashboard/loans"
   },
   {
     img: Decision,
     link: "Decision Models",
-    route: "decision-models"
+    route: "/dashboard/decision-models"
   },
   {
     img: Savings,
     link: "Savings",
-    route: "savings"
+    route: "/dashboard/savings"
   },
   {
     img: LoanRequest,
     link: "Loan Requests",
-    route: "loan-request"
+    route: "/dashboard/loan-request"
   },
   {
     img: Whitelist,
     link: "Whitelists",
-    route: "whitelist"
+    route: "/dashboard/whitelist"
   },
   {
     img: Karma,
     link: "Karma",
-    route: "karma"
+    route: "/dashboard/karma"
   },
 ];
 

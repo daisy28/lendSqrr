@@ -4,7 +4,7 @@ import { MdArrowDropDown } from "react-icons/md";
 import UserImg from "../assets/image 4.svg";
 import Briefcase from "../assets/briefcase 1.svg";
 import Home from "../assets/home 1.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import CustomerData from "../lib/customers";
 import BusinessData from "../lib/business";
 import SettingsData from "../lib/settings";
@@ -12,6 +12,8 @@ import style from "./style.module.css";
 
 const Dashboard = ({...props}) => {
   const { toggle, handletoggle } = props;
+  const location = useLocation();
+  const splitLocation = location.pathname;
 
   return (
     <section className={``}>
@@ -71,7 +73,7 @@ const Dashboard = ({...props}) => {
               className={`${toggle ? `left-[220px] rotate-90` : `left-[40px] -rotate-90`} w-[25px] h-[25px]  text-primaryColor cursor-pointer fixed top-[100px]`}
               onClick={handletoggle}
             />
-            <div className={`bg-[rgba(255,255,255,0.05)] p-4`}>
+            <div className={`bg-[rgba(255,255,255,0.05)]`}>
             <div className={`${toggle ? `block` : `hidden`} relative mt-10 w-full mb-10 md:hidden`}>
             <input
               type="text"
@@ -88,7 +90,7 @@ const Dashboard = ({...props}) => {
               />
             </div>
           </div>
-              <div className={`flex items-center my-10`}>
+              <div className={`flex items-center my-10 px-4`}>
                 <Link to="/" className={`flex items-center`}>
                   <img src={Briefcase} alt="" />
                   <p
@@ -101,7 +103,7 @@ const Dashboard = ({...props}) => {
                   />
                 </Link>
               </div>
-              <div className={`flex items-center mb-10`}>
+              <div className={`flex items-center mb-10 px-4`}>
                 <Link to="/" className={`flex items-center`}>
                   <img src={Home} alt="" />
                   <p
@@ -113,19 +115,19 @@ const Dashboard = ({...props}) => {
               </div>
               <div>
                 <p
-                  className={`${toggle ? `text-[12px]` : `text-[.4rem]`} uppercase text-textColor font-[500] leading-[14px] mb-6`}
+                  className={`${toggle ? `text-[12px]` : `text-[.4rem]`} uppercase text-textColor font-[500] leading-[14px] mb-6 px-4`}
                 >
                   Customers
                 </p>
               </div>
               <div className={`mb-10`}>
-                {CustomerData.map((data) => {
+                {CustomerData.map(data => {
                   return (
-                    <div className={`flex items-center mb-6`} key={data.link}>
+                  <div className={`flex items-center mb-8 px-4 ${splitLocation === `${data.route}` ? `bg-[rgba(57,205,205,0.06)] border-l-2 border-secondaryColor py-3` : ``}`} key={data.link}>
                       <Link to={data.route} className={`flex items-center`}>
                         <img src={data.img} alt="" />
                         <p
-                          className={`${toggle ? `block` : `hidden`} font-Work Sans text-primaryColor text-[16px] leading-[19px] ml-2`}
+                          className={`${toggle ? `block` : `hidden`} font-Work Sans text-primaryColor text-[16px] leading-[19px] ml-2 `}
                         >
                           {data.link}
                         </p>
@@ -137,7 +139,7 @@ const Dashboard = ({...props}) => {
 
               <div>
                 <p
-                  className={`${toggle ? `text-[12px]` : `text-[.4rem]`} uppercase text-textColor font-[500] leading-[14px] mb-6`}
+                  className={`${toggle ? `text-[12px]` : `text-[.4rem]`} uppercase text-textColor font-[500] leading-[14px] mb-6 px-4`}
                 >
                   Businesses
                 </p>
@@ -145,11 +147,11 @@ const Dashboard = ({...props}) => {
               <div className={`mb-10`}>
                 {BusinessData.map((data) => {
                   return (
-                    <div className={`flex items-center mb-6`} key={data.link}>
+                    <div className={`flex items-center mb-8 px-4`} key={data.link}>
                       <Link to="/" className={`flex items-center`}>
                         <img src={data.img} alt="" />
                         <p
-                          className={`${toggle ? `block` : `hidden`} font-Work Sans text-primaryColor text-[16px] leading-[19px] ml-2`}
+                          className={`${toggle ? `block` : `hidden`} font-Work Sans text-primaryColor text-[16px] leading-[19px] ml-2 ${splitLocation === `/${data.link}` ? `bg-[rgba(57,205,205,0.06)] border-left border-secondaryColor` : ``}`}
                         >
                           {data.link}
                         </p>
@@ -160,7 +162,7 @@ const Dashboard = ({...props}) => {
               </div>
               <div>
                 <p
-                  className={`${toggle ? `text-[12px]` : `text-[.4rem]`} uppercase text-textColor font-[500] leading-[14px] mb-6`}
+                  className={`${toggle ? `text-[12px]` : `text-[.4rem]`} uppercase text-textColor font-[500] leading-[14px] mb-6 px-4`}
                 >
                   Settings
                 </p>
@@ -168,11 +170,11 @@ const Dashboard = ({...props}) => {
               <div>
                 {SettingsData.map((data) => {
                   return (
-                    <div className={`flex items-center mb-6`} key={data.link}>
+                    <div className={`flex items-center mb-8 px-4`} key={data.link}>
                       <Link to="/" className={`flex items-center`}>
                         <img src={data.img} alt="" />
                         <p
-                          className={`${toggle ? `block` : `hidden`} font-Work Sans text-primaryColor text-[16px] leading-[19px] ml-2`}
+                          className={`${toggle ? `block` : `hidden`} font-Work Sans text-primaryColor text-[16px] leading-[19px] ml-2 ${splitLocation === `/${data.link}` ? `bg-[rgba(57,205,205,0.06)] border-left border-secondaryColor` : ``}`}
                         >
                           {data.link}
                         </p>
