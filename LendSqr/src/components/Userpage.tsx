@@ -12,7 +12,7 @@ import Menu from "../assets/Vector (4).svg";
 
 import Paginate from "./Paginate";
 
-const UserDetails = ({ ...props }) => {
+const UserPage = ({ ...props }) => {
 
   const { toggle } = props;
 
@@ -408,7 +408,7 @@ const UserDetails = ({ ...props }) => {
 
 };
 
-export default UserDetails;
+export default UserPage;
      
           
 
