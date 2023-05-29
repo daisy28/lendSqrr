@@ -5,6 +5,7 @@ import UserInfo from "../lib/userInfo";
 import Icon from "../assets/Vector (3).svg";
 import Menu from "../assets/Vector (4).svg";
 import Paginate from "./Paginate";
+import Modal from "./Modal";
 
 const UserDetails = ({ ...props }) => {
   const { toggle } = props;
@@ -15,6 +16,13 @@ const UserDetails = ({ ...props }) => {
   const indexOfFirstInfo = indexOfLastInfo - infoPerPage;
   const currentPageInfo = users.slice(indexOfFirstInfo, indexOfLastInfo);
   const numberOfPages = Math.ceil(users.length / infoPerPage);
+  const [openModal, setOpenModal] = useState("0");
+
+  // const launchModal = (id: string, e: Event) => {
+  //   const target = e.target as Element
+  //   id === target.id ? setOpenModal(true): null
+  // // console.log(target.id)
+  // }
   const nextPage = () => {
     if (currentPage !== numberOfPages) {
       setCurrentPage(currentPage + 1);
@@ -44,7 +52,7 @@ const UserDetails = ({ ...props }) => {
     phoneNumber: string;
     date: object;
     createdAt: Date;
-    id: number;
+    id: string;
     orgName: string;
     lastActiveDate: string;
   }
@@ -89,7 +97,7 @@ const UserDetails = ({ ...props }) => {
         </div>
 
         <div
-          className={`${style._content} bg-[#fff] rounded-[4px] shadow-md border-[1px] border-[rgba(125, 125, 125, 0.06)] p-6`}
+          className={`${style._content} relative bg-[#fff] rounded-[4px] shadow-md border-[1px] border-[rgba(125, 125, 125, 0.06)] p-6`}
         >
           <div className={`w-[1100px]`}>
             <div className={`grid grid-cols-7 gap-8 mb-6`}>
@@ -175,19 +183,26 @@ const UserDetails = ({ ...props }) => {
                       {new Date(user.createdAt).toDateString()} 10: 00 AM
                     </p>
                     <p
-                    className={`font-Work Sans font-[400] text-[14px] leading-[16px] text-textColor 
-                      ${new Date(user.createdAt).getFullYear() < 2010 ? `bg-[rgba(228,3,59,0.1)] text-[#e4033b] text-center rounded-[100px] flex items-center justify-center` : null} 
-                      ${new Date(user.createdAt).getFullYear() < 2030 ? `bg-[rgba(84,95,125,0.06)] text-[#545F7D] text-center rounded-[100px] flex items-center justify-center` : null} 
-                      ${new Date(user.createdAt).getFullYear() <= 2089 ? `bg-[rgba(57,205,99,0.06)] text-[#39CD62] text-center rounded-[100px] flex items-center justify-center` : null} 
-                      ${new Date(user.createdAt).getFullYear() > 2089 ? `bg-[rgba(233,179,0,0.1)] text-[#E9B200] text-center rounded-[100px] flex items-center justify-center` : null}`}
+                    className={`font-Work Sans font-[400] text-[14px] leading-[16px] 
+                    ${new Date(user.createdAt).getFullYear() > 2089 ? `bg-[rgba(233,179,0,0.1)] text-[#E9B200] text-center rounded-[100px] flex items-center justify-center w-[60%]` : null}
+                    ${new Date(user.createdAt).getFullYear() <= 2089 ? `bg-[rgba(57,205,99,0.06)] text-[#39CD62] text-center rounded-[100px] flex items-center justify-center w-[50%]` : null} 
+                    ${new Date(user.createdAt).getFullYear() < 2030 ? `bg-[rgba(84,95,125,0.06)] text-[#545F7D] text-center rounded-[100px] flex items-center justify-center w-[55%]` : null} 
+                    ${new Date(user.createdAt).getFullYear() < 2010 ? `bg-[rgba(228,3,59,0.12)] text-[rgb(228,3,59)] text-center rounded-[100px] flex items-center justify-center w-[95px]` : null} 
+                      `}
                     >
                       {new Date(user.createdAt).getFullYear() < 2010 ? `Blacklisted` : `` 
                       || new Date(user.createdAt).getFullYear() < 2030 ? `Inactive` : ``
                       || new Date(user.createdAt).getFullYear() <= 2089 ? `Active` : ``  
                       || new Date(user.createdAt).getFullYear() > 2089 ? `Pending` : `` }
                     </p>
-                    <div className={`cursor-pointer mt-3`}>
-                      <img src={Menu} alt="" />
+                    <div
+                      className={`cursor-pointer mt-3`}
+                      onClick={(e) => {
+                        const target = e.target as Element
+                        user.id === target.id ? setOpenModal(user.id) : null
+                      }}>
+                      <img src={Menu} alt="" id={user.id} />
+                      { openModal === user.id ? <Modal /> : null}
                     </div>
                   </div>
                 </div>

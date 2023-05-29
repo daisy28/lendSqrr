@@ -30,10 +30,6 @@ const Business = [
     link: "Transactions",
   },
   {
-    img: LoanRequest,
-    link: "Loan Requests",
-  },
-  {
     img: Services,
     link: "Services",
   },

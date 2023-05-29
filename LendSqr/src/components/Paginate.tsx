@@ -12,7 +12,7 @@ const Paginate = ({ ...props }) => {
   const pageNumbers: number[] = [...Array(numberOfPages + 1).keys()].slice(1);
 
   return (
-    <div className={`flex items-center justify-between my-4`}>
+    <div className={`md:flex items-center justify-between my-4`}>
       <div className={`flex items-center`}>
         <p
           className={`font-Work Sans text-[14px] leading-[16px] text-textColor`}
@@ -39,7 +39,7 @@ const Paginate = ({ ...props }) => {
           </p>
         </div>
       </div>
-      <div className={`flex items-center`}>
+      <div className={`flex justify-between items-center my-6 md:my-0 w-full md:w-[252px]`}>
         <span
           onClick={prevPage}
           className={`cursor-pointer bg-[rgba(33,64,125,0.1)] p-[.1rem] flex justify-center rounded-[4px]`}
@@ -48,13 +48,13 @@ const Paginate = ({ ...props }) => {
             className={`w-[20px] h-[20px] text-primaryColor cursor-pointer rotate-[90deg]`}
           />
         </span>
-        <div className={`flex items-center`}>
+        <div className={`flex items-center justify-between w-[70%]`}>
           {pageNumbers.map((number) => {
             return (
               <div key={number}>
                 <span
                   onClick={() => setCurrentPage(number)}
-                  className={`ml-3 cursor-pointer ${
+                  className={`cursor-pointer ${
                     currentPage == number
                       ? `text-textColor`
                       : `text-[rgba(84,95,125,0.6)]`
@@ -68,7 +68,7 @@ const Paginate = ({ ...props }) => {
         </div>
         <span
           onClick={nextPage}
-          className={`cursor-pointer bg-[rgba(33,64,125,0.1)] p-[.1rem] flex justify-center rounded-[4px] ml-3`}
+          className={`cursor-pointer bg-[rgba(33,64,125,0.1)] p-[.1rem] flex justify-center rounded-[4px]`}
         >
           <MdKeyboardArrowDown
             className={`w-[20px] h-[20px] text-primaryColor cursor-pointer rotate-[-90deg]`}
