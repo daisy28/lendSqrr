@@ -106,7 +106,7 @@ const UserDetails = ({ ...props }) => {
                   Organization
                 </p>
                 <img src={Icon} alt="" className={`ml-3 cursor-pointer`} />
-                  {openForm ? <UserForm /> : null}
+                  {openForm ? <UserForm users={users} /> : null}
               </div>
               <div className={`flex items-center relative`}>
                 <p
