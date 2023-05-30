@@ -94,10 +94,10 @@ const UserDetails = ({ ...props }) => {
         </div>
 
         <div
-          className={`${style._content} relative bg-[#fff] rounded-[4px] shadow-md border-[1px] border-[rgba(125, 125, 125, 0.06)] p-6`}
+          className={`${style._content} relative bg-[#fff] rounded-[4px] shadow-md border-[1px] border-[rgba(125, 125, 125, 0.06)]`}
         >
-          <div className={`w-[1100px]`}>
-            <div className={`grid grid-cols-7 gap-8 mb-6`}>
+          <div className={`w-[1100px] p-6`}>
+            <div className={`grid grid-cols-6 gap-8 mb-6`}>
               <div className={`flex items-center relative`}>
                 <p
                   className={`font-Work Sans font-[600] text-[12px] leading-[14px] uppercase text-textColor cursor-pointer`}
@@ -151,11 +151,12 @@ const UserDetails = ({ ...props }) => {
             </div>
             {currentPageInfo.map((user: User) => {
               return (
-                <div className={``} key={user.id}>
+                <div className={`relative`} key={user.id}>
                   <div
-                    className={`py-6 border-b border-[rgba(33, 63, 125, 0.1)] grid grid-cols-7 gap-8`}
+                    className={`py-6  grid grid-cols-6 gap-8 h-[76.84px] border-b border-[rgba(33, 63, 125, 0.1)]`}
                     key={user.id}
                   >
+                    {/* ${indexOfLastInfo  === infoPerPage ? `border-0` : `border-b border-[rgba(33, 63, 125, 0.1)]`} */}
                     <p
                       className={`font-Work Sans font-[400] text-[12px] leading-[14px] text-textColor`}
                     >
@@ -186,7 +187,7 @@ const UserDetails = ({ ...props }) => {
                     ${new Date(user.createdAt).getFullYear() > 2089 ? `bg-[rgba(233,179,0,0.1)] text-[#E9B200] text-center rounded-[100px] flex items-center justify-center w-[60%]` : null}
                     ${new Date(user.createdAt).getFullYear() <= 2089 ? `bg-[rgba(57,205,99,0.06)] text-[#39CD62] text-center rounded-[100px] flex items-center justify-center w-[50%]` : null} 
                     ${new Date(user.createdAt).getFullYear() < 2030 ? `bg-[rgba(84,95,125,0.06)] text-[#545F7D] text-center rounded-[100px] flex items-center justify-center w-[55%]` : null} 
-                    ${new Date(user.createdAt).getFullYear() < 2010 ? `bg-[rgba(228,3,59,0.12)] text-[rgb(228,3,59)] text-center rounded-[100px] flex items-center justify-center w-[95px]` : null} 
+                    ${new Date(user.createdAt).getFullYear() < 2010 ? `bg-[rgba(228,3,59,0.13)] text-[rgb(228,3,59)] text-center rounded-[100px] flex items-center justify-center w-[95px]` : null} 
                       `}
                     >
                       {new Date(user.createdAt).getFullYear() < 2010 ? `Blacklisted` : `` 
@@ -195,7 +196,7 @@ const UserDetails = ({ ...props }) => {
                       || new Date(user.createdAt).getFullYear() > 2089 ? `Pending` : `` }
                     </p>
                     <div
-                      className={`cursor-pointer mt-3`}
+                      className={`cursor-pointer mt-3 absolute right-0 top-[15px]`}
                       onClick={(e) => {
                         const target = e.target as Element
                         user.id === target.id ? setOpenModal(user.id) : null

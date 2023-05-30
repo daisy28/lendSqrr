@@ -6,7 +6,7 @@ const Modal = () => {
   return (
      <section className={`relative`}>
     <div
-      className={`w-[180px] bg-white shadow-md border border-[rgba(84, 95, 125, 0.04)] rounded-[4px] absolute right-[60px] top-[-30px] z-20 p-6 flex flex-col justify-between`}
+      className={`w-[180px] bg-white shadow-md border border-[rgba(84, 95, 125, 0.04)] rounded-[4px] absolute right-[-40px] top-[-40px] z-20 p-6 flex flex-col justify-between`}
     >
       <div className={`flex items-center mb-6 cursor-pointer`}>
         <img src={Eye} alt="" />

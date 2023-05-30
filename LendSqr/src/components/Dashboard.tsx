@@ -74,7 +74,7 @@ const Dashboard = ({...props}) => {
               onClick={handletoggle}
             />
             <div className={`bg-[rgba(255,255,255,0.05)]`}>
-            <div className={`${toggle ? `block` : `hidden`} relative mt-10 w-full mb-10 md:hidden`}>
+            <div className={`${toggle ? `block` : `hidden`} relative px-4 mt-10 w-full mb-10 md:hidden`}>
             <input
               type="text"
               name=""
@@ -83,7 +83,7 @@ const Dashboard = ({...props}) => {
               className={`border-[1px] border-primaryColor p-4 outline-none text-textColor rounded-[8px] h-[40px] bg-transparent text-[10px] md:text-[14px] leading-[16px] w-full font-Work Sans`}
             />
             <div
-              className={`absolute w-[56px] bg-secondaryColor right-0 h-[40px] flex justify-center items-center top-0 rounded-tr-[8px] rounded-br-[8px]`}
+              className={`absolute w-[56px] bg-secondaryColor right-[12px] h-[40px] flex justify-center items-center top-0 rounded-tr-[8px] rounded-br-[8px]`}
             >
               <BsSearch
                 className={`w-[14px] h-[14px] text-white cursor-pointer`}
