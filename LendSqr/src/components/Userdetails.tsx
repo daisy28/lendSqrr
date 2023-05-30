@@ -6,6 +6,7 @@ import Icon from "../assets/Vector (3).svg";
 import Menu from "../assets/Vector (4).svg";
 import Paginate from "./Paginate";
 import Modal from "./Modal";
+import UserForm from "./UserForm";
 
 const UserDetails = ({ ...props }) => {
   const { toggle } = props;
@@ -17,12 +18,8 @@ const UserDetails = ({ ...props }) => {
   const currentPageInfo = users.slice(indexOfFirstInfo, indexOfLastInfo);
   const numberOfPages = Math.ceil(users.length / infoPerPage);
   const [openModal, setOpenModal] = useState("0");
+  const [openForm, setOpenForm] = useState(false);
 
-  // const launchModal = (id: string, e: Event) => {
-  //   const target = e.target as Element
-  //   id === target.id ? setOpenModal(true): null
-  // // console.log(target.id)
-  // }
   const nextPage = () => {
     if (currentPage !== numberOfPages) {
       setCurrentPage(currentPage + 1);
@@ -103,11 +100,13 @@ const UserDetails = ({ ...props }) => {
             <div className={`grid grid-cols-7 gap-8 mb-6`}>
               <div className={`flex items-center relative`}>
                 <p
-                  className={`font-Work Sans font-[600] text-[12px] leading-[14px] uppercase text-textColor`}
+                  className={`font-Work Sans font-[600] text-[12px] leading-[14px] uppercase text-textColor cursor-pointer`}
+                  onClick={() => setOpenForm(prevState => !prevState)}
                 >
                   Organization
                 </p>
                 <img src={Icon} alt="" className={`ml-3 cursor-pointer`} />
+                  {openForm ? <UserForm /> : null}
               </div>
               <div className={`flex items-center relative`}>
                 <p
@@ -180,7 +179,7 @@ const UserDetails = ({ ...props }) => {
                     <p
                       className={`font-Work Sans font-[400] text-[12px] leading-[14px] text-textColor`}
                     >
-                      {new Date(user.createdAt).toDateString()} 10: 00 AM
+                      {new Date(user.createdAt).toDateString()} 10:00 AM
                     </p>
                     <p
                     className={`font-Work Sans font-[400] text-[14px] leading-[16px] 
