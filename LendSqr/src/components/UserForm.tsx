@@ -1,6 +1,5 @@
-// import { useRef } from "react";
-import { useState } from "react";
-import Calendar from "../assets/np_calendar_2080577_000000 1.svg";
+import { useState, useRef } from "react";
+// import Calendar from "../assets/np_calendar_2080577_000000 1.svg";
 
 const Form = ({ ...props }) => {
   const { users } = props;
@@ -10,23 +9,38 @@ const Form = ({ ...props }) => {
   const [date, setDate] = useState("");
   const [phone, setPhone] = useState("");
   const [status, setStatus] = useState("");
-
+  interface User {
+    userName: string;
+    email: string;
+    phoneNumber: string;
+    date: object;
+    createdAt: Date;
+    id: string;
+    orgName: string;
+    lastActiveDate: string;
+  }
+  // const formRef = useRef();
 
   const filterUsers = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     console.log(users);
-    console.log(username, email, date, phone);
+    users.map((user: User) => {
+      setOrganization(user.orgName)
+      console.log(user)
+    })
+    console.log(username, email, date, phone, organization, status);
+    // formRef = ""
   };
 
-  const nums = [3, 6, 60, 68, 79, 100, 120, 403, 0, 3]
-  console.log(nums.filter(num => !(num > 60)))
+  // const nums = [3, 6, 60, 68, 79, 100, 120, 403, 0, 3]
+  // console.log(nums.filter(num => !(num > 60)))
 
   return (
     <section className={`absolute top-[28px] z-[30]`}>
       <div
         className={`shadow-md w-[270px] bg-white rounded-[4px] border border-[rgba(84, 95, 125, 0.14)] p-4 py-6`}
       >
-        <form action="" onSubmit={filterUsers}>
+        <form action="" onSubmit={filterUsers} >
           <div className={`relative mb-4`}>
             <label
               htmlFor="organization"
@@ -40,11 +54,12 @@ const Form = ({ ...props }) => {
                 id="organization"
                 placeholder=""
                 className={`absolute right-[.8rem] top-[10px] outline-none text-[#213f7d] cursor-pointer z-[20]`}
+                onChange={(e) => setOrganization(e.target.value)}
               >
-                <option value="">--Choose--</option>
-                <option value="">lendsqr</option>
-                <option value="">lenders</option>
-                <option value="">access</option>
+                  <option value="" disabled>--Choose--</option>
+                  {users.map((user: User) => {
+                    return <option value={user.orgName} key={user.id}>{user.orgName}</option>
+                  })}
               </select>
               <input
                 className={`bg-transparent border border-[#213f7d] rounded-[8px] font-Work Sans text-[14px] leading-[16px] text-textColor opacity-[0.7] p-2 px-3 w-full outline-none mt-1`}
@@ -108,11 +123,11 @@ const Form = ({ ...props }) => {
                 placeholder="Date"
                 onChange={(e) => setDate(e.target.value)}
               />
-              <img
+              {/* <img
                 src={Calendar}
                 alt=""
                 className={`absolute top-[.85rem] right-[14px]`}
-              />
+              /> */}
             </div>
           </div>
           <div className={`relative mb-4`}>
@@ -146,8 +161,9 @@ const Form = ({ ...props }) => {
                 id="status"
                 placeholder=""
                 className={`absolute right-[.8rem] top-[10px] outline-none text-[#213f7d] cursor-pointer z-[20]`}
+                onChange={(e) => setStatus(e.target.value)}
               >
-                <option value="">--Choose--</option>
+                <option value="" disabled>--Choose--</option>
                 <option value="Active">Active</option>
                 <option value="Blacklist">Blacklist</option>
                 <option value="Pending">Pending</option>
