@@ -1,13 +1,25 @@
+// import { useRef } from "react";
+import { useState } from "react";
 import Calendar from "../assets/np_calendar_2080577_000000 1.svg";
 
 const Form = ({ ...props }) => {
-     const { users } = props;
+  const { users } = props;
+  const [organization, setOrganization] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [date, setDate] = useState("");
+  const [phone, setPhone] = useState("");
+  const [status, setStatus] = useState("");
 
-     const filterUsers = (e: Event) => {
-          e.preventDefault();
-          console.log(users);
-          return users
-     };
+
+  const filterUsers = (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    console.log(users);
+    console.log(username, email, date, phone);
+  };
+
+  const nums = [3, 6, 60, 68, 79, 100, 120, 403, 0, 3]
+  console.log(nums.filter(num => !(num > 60)))
 
   return (
     <section className={`absolute top-[28px] z-[30]`}>
@@ -28,12 +40,18 @@ const Form = ({ ...props }) => {
                 id="organization"
                 placeholder=""
                 className={`absolute right-[.8rem] top-[10px] outline-none text-[#213f7d] cursor-pointer z-[20]`}
-              ></select>
+              >
+                <option value="">--Choose--</option>
+                <option value="">lendsqr</option>
+                <option value="">lenders</option>
+                <option value="">access</option>
+              </select>
               <input
                 className={`bg-transparent border border-[#213f7d] rounded-[8px] font-Work Sans text-[14px] leading-[16px] text-textColor opacity-[0.7] p-2 px-3 w-full outline-none mt-1`}
                 type=""
                 name=""
                 id=""
+                disabled={true}
                 placeholder="select"
               />
             </div>
@@ -52,6 +70,7 @@ const Form = ({ ...props }) => {
                 name=""
                 id="username"
                 placeholder="User"
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
           </div>
@@ -69,6 +88,7 @@ const Form = ({ ...props }) => {
                 name=""
                 id="Email"
                 placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           </div>
@@ -82,15 +102,16 @@ const Form = ({ ...props }) => {
             <div className={`relative`}>
               <input
                 className={`bg-transparent border border-[#213f7d] rounded-[8px] font-Work Sans text-[14px] leading-[16px] text-textColor opacity-[0.7] p-2 px-3 w-full outline-none mt-1`}
-                type="datetime"
+                type="date"
                 name=""
                 id="Date"
                 placeholder="Date"
+                onChange={(e) => setDate(e.target.value)}
               />
               <img
                 src={Calendar}
                 alt=""
-                className={`absolute right-[.8rem] top-[12px]`}
+                className={`absolute top-[.85rem] right-[14px]`}
               />
             </div>
           </div>
@@ -108,6 +129,7 @@ const Form = ({ ...props }) => {
                 name=""
                 id="Phone Number"
                 placeholder="Phone Number"
+                onChange={(e) => setPhone(e.target.value)}
               />
             </div>
           </div>
@@ -124,7 +146,13 @@ const Form = ({ ...props }) => {
                 id="status"
                 placeholder=""
                 className={`absolute right-[.8rem] top-[10px] outline-none text-[#213f7d] cursor-pointer z-[20]`}
-              ></select>
+              >
+                <option value="">--Choose--</option>
+                <option value="Active">Active</option>
+                <option value="Blacklist">Blacklist</option>
+                <option value="Pending">Pending</option>
+                <option value="Inactive">Inactive</option>
+              </select>
               <input
                 className={`bg-transparent border border-[#213f7d] rounded-[8px] font-Work Sans text-[14px] leading-[16px] text-textColor opacity-[0.7] p-2 px-3 w-full outline-none mt-1`}
                 type=""
