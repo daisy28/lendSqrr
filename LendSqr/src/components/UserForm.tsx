@@ -6,7 +6,7 @@ const Form = ({ ...props }) => {
   const [organization, setOrganization] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(Date);
   const [phone, setPhone] = useState("");
   const [status, setStatus] = useState("");
   interface User {
@@ -23,17 +23,25 @@ const Form = ({ ...props }) => {
 
   const filterUsers = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    console.log(users);
-    users.map((user: User) => {
-      setOrganization(user.orgName)
+    users.filter((user: User) => {
+      // console.log(username, email, date, phone, organization, status);
+      // const dateInput = new Date(user.createdAt).toISOString();
+      // console.log(dateInput)
+      console.log(date)
+      console.log(user.createdAt)
+      console.log(
+        email === user.email,
+        phone === user.phoneNumber,
+        organization === user.orgName,
+        username === user.userName,
+        // date === user.createdAt,
+      )
       console.log(user)
+
     })
     console.log(username, email, date, phone, organization, status);
     // formRef = ""
   };
-
-  // const nums = [3, 6, 60, 68, 79, 100, 120, 403, 0, 3]
-  // console.log(nums.filter(num => !(num > 60)))
 
   return (
     <section className={`absolute top-[28px] z-[30]`}>
@@ -121,7 +129,7 @@ const Form = ({ ...props }) => {
                 name=""
                 id="Date"
                 placeholder="Date"
-                onChange={(e) => setDate(e.target.value)}
+                onChange={(e) => setDate(new Date(e.target.value).toISOString())}
               />
               {/* <img
                 src={Calendar}
@@ -164,10 +172,10 @@ const Form = ({ ...props }) => {
                 onChange={(e) => setStatus(e.target.value)}
               >
                 <option value="" disabled>--Choose--</option>
-                <option value="Active">Active</option>
-                <option value="Blacklist">Blacklist</option>
-                <option value="Pending">Pending</option>
-                <option value="Inactive">Inactive</option>
+                <option value="Active" className={`text-[#39CD62]`}>Active</option>
+                <option value="Blacklisted" className={`text-[rgb(228,3,59)]`}>Blacklisted</option>
+                <option value="Pending" className={`text-[#E9B200]`}>Pending</option>
+                <option value="Inactive" className={`text-[#545F7D]`}>Inactive</option>
               </select>
               <input
                 className={`bg-transparent border border-[#213f7d] rounded-[8px] font-Work Sans text-[14px] leading-[16px] text-textColor opacity-[0.7] p-2 px-3 w-full outline-none mt-1`}
