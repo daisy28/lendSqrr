@@ -2,7 +2,7 @@
 const UserPage = () => {
   return (
     <section>
-      Hello world
+      Display complete user details here
     </section>
   )
 }
