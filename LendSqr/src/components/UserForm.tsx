@@ -1,27 +1,16 @@
-import { useState, useEffect, useRef } from "react";
-import axios from "axios";
+import { MutableRefObject, useRef } from "react";
 // import Calendar from "../assets/np_calendar_2080577_000000 1.svg";
 
 const Form = ({ ...props }) => {
-  const { filterUsers, setOrganization, setUsername, setEmail, setDate, setPhone, setStatus } = props;
-  const [users, setUsers] = useState([]);
-
+  const {users, filterUsers, setOrganization, setUsername, setEmail, setDate, setPhone, setStatus } = props;
   interface User {
     id: string;
     orgName: string;
   }
-
-   const getUsers = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users`;
-  useEffect(() => {
-    axios
-      .get(getUsers)
-      .then((response) => {
-        setUsers(response.data);
-      })
-      .catch((err) => console.log(err));
-  }, [getUsers]);
-
-  const formRef = useRef();
+  const formRef = useRef() as MutableRefObject<HTMLFormElement>;
+  const resetForm = () => {
+    formRef.current.reset();
+  }
 
   return (
     <section className={`absolute top-[28px] z-[30]`}>
@@ -169,7 +158,7 @@ const Form = ({ ...props }) => {
           <div className={`mb-4 flex`}>
             <button
               className={`w-[98px] text-center border border-[#545f7d] rounded-[8px] font-Work Sans font-[600] text-[14px] leading-[16px] text-textColor py-2`}
-              onClick={}
+              onClick={resetForm}
             >
               Reset
             </button>

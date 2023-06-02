@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
-import UserDetails from "./components/Userdetails";
+import Users from "./components/Users";
 import UserPage from "./components/Userpage";
 import { createHashRouter, RouterProvider, Outlet } from "react-router-dom";
 
@@ -35,7 +35,7 @@ function App() {
         children: [
           {
             index: true,
-            element: <UserDetails />
+            element: <Users />
           },
           {
             path: "user-page",

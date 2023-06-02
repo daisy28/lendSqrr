@@ -8,7 +8,7 @@ import Paginate from "./Paginate";
 import Modal from "./Modal";
 import UserForm from "./UserForm";
 
-const UserDetails = ({ ...props }) => {
+const Users = ({ ...props }) => {
   const { toggle } = props;
   interface User {
     userName: string;
@@ -49,7 +49,6 @@ const UserDetails = ({ ...props }) => {
   };
 
   const getUsers = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users`;
-  // const getUserDetailsById = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/:id`;
   useEffect(() => {
     axios
       .get(getUsers)
@@ -63,10 +62,9 @@ const UserDetails = ({ ...props }) => {
     e.preventDefault();
     const filteredUser = users.filter((user: User) => {
       const dateInput = new Date(user.createdAt).toDateString();
-      console.log(email === user.email && phone === user.phoneNumber && organization === user.orgName && username === user.userName && date === dateInput)
       return email === user.email && phone === user.phoneNumber && organization === user.orgName && username === user.userName && date === dateInput;
     });
-    setUsers(filteredUser)
+    setUsers(filteredUser);
   };
 
   return (
@@ -248,4 +246,4 @@ const UserDetails = ({ ...props }) => {
   );
 };
 
-export default UserDetails;
+export default Users;
