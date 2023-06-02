@@ -10,7 +10,18 @@ import UserForm from "./UserForm";
 
 const UserDetails = ({ ...props }) => {
   const { toggle } = props;
-  const [users, setUsers] = useState<[]>([]);
+  interface User {
+    userName: string;
+    email: string;
+    phoneNumber: string;
+    date: object;
+    createdAt: Date;
+    id: string;
+    orgName: string;
+    lastActiveDate: string;
+  }
+
+  const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [infoPerPage] = useState(10);
   const indexOfLastInfo = currentPage * infoPerPage;
@@ -19,6 +30,12 @@ const UserDetails = ({ ...props }) => {
   const numberOfPages = Math.ceil(users.length / infoPerPage);
   const [openModal, setOpenModal] = useState("0");
   const [openForm, setOpenForm] = useState(false);
+  const [organization, setOrganization] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [date, setDate] = useState(Date);
+  const [phone, setPhone] = useState("");
+  const [status, setStatus] = useState("");
 
   const nextPage = () => {
     if (currentPage !== numberOfPages) {
@@ -33,26 +50,24 @@ const UserDetails = ({ ...props }) => {
 
   const getUsers = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users`;
   // const getUserDetailsById = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/:id`;
-
   useEffect(() => {
     axios
       .get(getUsers)
-      .then((data) => {
-        setUsers(data.data);
+      .then((response) => {
+        setUsers(response.data);
       })
       .catch((err) => console.log(err));
   }, [getUsers]);
 
-  interface User {
-    userName: string;
-    email: string;
-    phoneNumber: string;
-    date: object;
-    createdAt: Date;
-    id: string;
-    orgName: string;
-    lastActiveDate: string;
-  }
+  const filterUsers = (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    const filteredUser = users.filter((user: User) => {
+      const dateInput = new Date(user.createdAt).toDateString();
+      console.log(email === user.email && phone === user.phoneNumber && organization === user.orgName && username === user.userName && date === dateInput)
+      return email === user.email && phone === user.phoneNumber && organization === user.orgName && username === user.userName && date === dateInput;
+    });
+    setUsers(filteredUser)
+  };
 
   return (
     <section
@@ -106,7 +121,16 @@ const UserDetails = ({ ...props }) => {
                   Organization
                 </p>
                 <img src={Icon} alt="" className={`ml-3 cursor-pointer`} />
-                  {openForm && <UserForm users={users} />}
+                {openForm && <UserForm
+                  users={users}
+                  filterUsers={filterUsers}
+                  setOrganization={setOrganization}
+                  setUsername={setUsername}
+                  setEmail={setEmail}
+                  setPhone={setPhone}
+                  setStatus={setStatus}
+                  setDate={setDate}
+                />}
               </div>
               <div className={`flex items-center relative`}>
                 <p
@@ -156,7 +180,6 @@ const UserDetails = ({ ...props }) => {
                     className={`py-6  grid grid-cols-6 gap-8 h-[76.84px] border-b border-[rgba(33, 63, 125, 0.1)]`}
                     key={user.id}
                   >
-                    {/* ${indexOfLastInfo  === infoPerPage ? `border-0` : `border-b border-[rgba(33, 63, 125, 0.1)]`} */}
                     <p
                       className={`font-Work Sans font-[400] text-[12px] leading-[14px] text-textColor`}
                     >
@@ -187,7 +210,7 @@ const UserDetails = ({ ...props }) => {
                     ${new Date(user.createdAt).getFullYear() > 2089 && `bg-[rgba(233,179,0,0.1)] text-[#E9B200] text-center rounded-[100px] flex items-center justify-center w-[60%]`}
                     ${new Date(user.createdAt).getFullYear() <= 2089 && `bg-[rgba(57,205,99,0.06)] text-[#39CD62] text-center rounded-[100px] flex items-center justify-center w-[50%]`} 
                     ${new Date(user.createdAt).getFullYear() < 2030 && `bg-[rgba(84,95,125,0.06)] text-[#545F7D] text-center rounded-[100px] flex items-center justify-center w-[55%]`} 
-                    ${new Date(user.createdAt).getFullYear() < 2010 && `bg-[rgba(228,3,59,0.13)] text-[rgb(228,3,59)] text-center rounded-[100px] flex items-center justify-center w-[95px]`} 
+                    ${new Date(user.createdAt).getFullYear() < 2010 && `bg-[rgba(228,3,59,0.14)] text-[rgb(228,3,59)] text-center rounded-[100px] flex items-center justify-center w-[95px]`} 
                       `}
                     >
                       {new Date(user.createdAt).getFullYear() < 2010 ? `Blacklisted` : `` 
@@ -202,7 +225,7 @@ const UserDetails = ({ ...props }) => {
                         user.id === target.id ? setOpenModal(user.id) : null
                       }}>
                       <img src={Menu} alt="" id={user.id} />
-                      { openModal === user.id ? <Modal /> : null}
+                      { openModal === user.id && <Modal /> }
                     </div>
                   </div>
                 </div>
