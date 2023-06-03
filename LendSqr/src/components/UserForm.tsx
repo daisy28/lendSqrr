@@ -1,16 +1,30 @@
-import { MutableRefObject, useRef } from "react";
+import { useState, useContext, MutableRefObject, useRef } from "react";
+import { UserContext } from "../App";
 // import Calendar from "../assets/np_calendar_2080577_000000 1.svg";
 
-const Form = ({ ...props }) => {
-  const {users, filterUsers, setOrganization, setUsername, setEmail, setDate, setPhone, setStatus } = props;
-  interface User {
-    id: string;
-    orgName: string;
-  }
+const Form = () => {
+  const users = useContext(UserContext);
+  console.log(users)
+  const [organization, setOrganization] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [date, setDate] = useState(Date);
+  const [phone, setPhone] = useState("");
+  const [status, setStatus] = useState("");
+ 
   const formRef = useRef() as MutableRefObject<HTMLFormElement>;
   const resetForm = () => {
     formRef.current.reset();
   }
+
+   const filterUsers = (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    const filteredUser = users.filter((user) => {
+      const dateInput = new Date(user.createdAt).toDateString();
+      return email === user.email && phone === user.phoneNumber && organization === user.orgName && username === user.userName && date === dateInput;
+    });
+    setUsers(filteredUser);
+  };
 
   return (
     <section className={`absolute top-[28px] z-[30]`}>
@@ -34,7 +48,7 @@ const Form = ({ ...props }) => {
                 onChange={(e) => setOrganization(e.target.value)}
               >
                   <option value="" disabled>--Choose--</option>
-                  {users.map((user: User) => {
+                  {users.map((user) => {
                     return <option value={user.orgName} key={user.id} className={``}>{user.orgName}</option>
                   })}
               </select>

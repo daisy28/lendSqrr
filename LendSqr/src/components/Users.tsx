@@ -9,23 +9,17 @@ import Modal from "./Modal";
 import UserForm from "./UserForm";
 
 const Users = ({ ...props }) => {
-const newUser = useContext(UserContext);
-console.log(newUser)
-  const { toggle } = props;
+const users = useContext(UserContext);
+const { toggle } = props;
   const [currentPage, setCurrentPage] = useState(1);
   const [infoPerPage] = useState(10);
   const indexOfLastInfo = currentPage * infoPerPage;
   const indexOfFirstInfo = indexOfLastInfo - infoPerPage;
-  const currentPageInfo = newUser.slice(indexOfFirstInfo, indexOfLastInfo);
-  const numberOfPages = Math.ceil(newUser.length / infoPerPage);
+  const currentPageInfo = users.slice(indexOfFirstInfo, indexOfLastInfo);
+  const numberOfPages = Math.ceil(users.length / infoPerPage);
   const [openModal, setOpenModal] = useState("0");
   const [openForm, setOpenForm] = useState(false);
-  const [organization, setOrganization] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [date, setDate] = useState(Date);
-  const [phone, setPhone] = useState("");
-  const [status, setStatus] = useState("");
+ 
 
   const nextPage = () => {
     if (currentPage !== numberOfPages) {
@@ -38,14 +32,7 @@ console.log(newUser)
     }
   };
 
-  const filterUsers = (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    const filteredUser = newUser.filter((user) => {
-      const dateInput = new Date(user.createdAt).toDateString();
-      return email === user.email && phone === user.phoneNumber && organization === user.orgName && username === user.userName && date === dateInput;
-    });
-    setUsers(filteredUser);
-  };
+ 
 
   return (
     <section
@@ -99,16 +86,7 @@ console.log(newUser)
                   Organization
                 </p>
                 <img src={Icon} alt="" className={`ml-3 cursor-pointer`} />
-                {openForm && <UserForm
-                  users={users}
-                  filterUsers={filterUsers}
-                  setOrganization={setOrganization}
-                  setUsername={setUsername}
-                  setEmail={setEmail}
-                  setPhone={setPhone}
-                  setStatus={setStatus}
-                  setDate={setDate}
-                />}
+                {openForm && <UserForm />}
               </div>
               <div className={`flex items-center relative`}>
                 <p
