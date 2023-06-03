@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState, useContext } from "react";
+import { UserContext } from "../App";
 import style from "./style.module.css";
 import UserInfo from "../lib/userInfo";
 import Icon from "../assets/Vector (3).svg";
@@ -9,25 +9,15 @@ import Modal from "./Modal";
 import UserForm from "./UserForm";
 
 const Users = ({ ...props }) => {
+const newUser = useContext(UserContext);
+console.log(newUser)
   const { toggle } = props;
-  interface User {
-    userName: string;
-    email: string;
-    phoneNumber: string;
-    date: object;
-    createdAt: Date;
-    id: string;
-    orgName: string;
-    lastActiveDate: string;
-  }
-
-  const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [infoPerPage] = useState(10);
   const indexOfLastInfo = currentPage * infoPerPage;
   const indexOfFirstInfo = indexOfLastInfo - infoPerPage;
-  const currentPageInfo = users.slice(indexOfFirstInfo, indexOfLastInfo);
-  const numberOfPages = Math.ceil(users.length / infoPerPage);
+  const currentPageInfo = newUser.slice(indexOfFirstInfo, indexOfLastInfo);
+  const numberOfPages = Math.ceil(newUser.length / infoPerPage);
   const [openModal, setOpenModal] = useState("0");
   const [openForm, setOpenForm] = useState(false);
   const [organization, setOrganization] = useState("");
@@ -48,19 +38,9 @@ const Users = ({ ...props }) => {
     }
   };
 
-  const getUsers = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users`;
-  useEffect(() => {
-    axios
-      .get(getUsers)
-      .then((response) => {
-        setUsers(response.data);
-      })
-      .catch((err) => console.log(err));
-  }, [getUsers]);
-
   const filterUsers = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    const filteredUser = users.filter((user: User) => {
+    const filteredUser = newUser.filter((user) => {
       const dateInput = new Date(user.createdAt).toDateString();
       return email === user.email && phone === user.phoneNumber && organization === user.orgName && username === user.userName && date === dateInput;
     });
@@ -171,7 +151,7 @@ const Users = ({ ...props }) => {
                 <img src={Icon} alt="" className={`ml-3 cursor-pointer`} />
               </div>
             </div>
-            {currentPageInfo.map((user: User) => {
+            {currentPageInfo.map((user) => {
               return (
                 <div className={`relative`} key={user.id}>
                   <div
