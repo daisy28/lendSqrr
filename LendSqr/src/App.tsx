@@ -6,7 +6,8 @@ import Users from "./components/Users";
 import UserPage from "./components/Userpage";
 import { createHashRouter, RouterProvider, Outlet } from "react-router-dom";
 
-interface User {
+export const UserContext = createContext<User[]>([]);
+  interface User {
   userName: string;
   email: string;
   phoneNumber: string;
@@ -15,27 +16,28 @@ interface User {
   id: string;
   orgName: string;
   lastActiveDate: string;
+  setUsers:  React.Dispatch<React.SetStateAction<[]>>
 }
-type UserContextType = User[];
-export const UserContext = createContext<UserContextType>([]);
 
 const Layout = () => {
+  
   const [toggle, setToggle] = useState(false);
   const [users, setUsers] = useState<Array<User>>([])
-  const getUsers = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users`;
+  const lendsqrUsers = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users`;
   useEffect(() => {
     axios
-      .get(getUsers)
+      .get(lendsqrUsers)
       .then((response) => {
         setUsers(response.data);
       })
       .catch((err) => console.log(err));
-  }, [getUsers]);
+  }, [lendsqrUsers]);
 
   const handleToggle = ():boolean => {
     setToggle(prevToggle => !prevToggle);
     return toggle
   }
+
 
   return (
     <UserContext.Provider value={users}>
