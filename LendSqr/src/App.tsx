@@ -6,8 +6,7 @@ import Users from "./components/Users";
 import UserPage from "./components/Userpage";
 import { createHashRouter, RouterProvider, Outlet } from "react-router-dom";
 
-export const UserContext = createContext<User[]>([]);
-  interface User {
+interface User {
   userName: string;
   email: string;
   phoneNumber: string;
@@ -16,11 +15,9 @@ export const UserContext = createContext<User[]>([]);
   id: string;
   orgName: string;
   lastActiveDate: string;
-  setUsers:  React.Dispatch<React.SetStateAction<[]>>
 }
-
+export const UserContext = createContext<User[]>([]);
 const Layout = () => {
-  
   const [toggle, setToggle] = useState(false);
   const [users, setUsers] = useState<Array<User>>([])
   const lendsqrUsers = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users`;
@@ -37,7 +34,6 @@ const Layout = () => {
     setToggle(prevToggle => !prevToggle);
     return toggle
   }
-
 
   return (
     <UserContext.Provider value={users}>
