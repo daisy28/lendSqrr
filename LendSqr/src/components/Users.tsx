@@ -9,8 +9,8 @@ import Modal from "./Modal";
 import UserForm from "./UserForm";
 
 const Users = ({ ...props }) => {
-const users = useContext(UserContext);
-const { toggle } = props;
+  const users = useContext(UserContext);
+  const { toggle } = props;
   const [currentPage, setCurrentPage] = useState(1);
   const [infoPerPage] = useState(10);
   const indexOfLastInfo = currentPage * infoPerPage;
@@ -20,7 +20,6 @@ const { toggle } = props;
   const [openModal, setOpenModal] = useState("0");
   const [openForm, setOpenForm] = useState(false);
  
-
   const nextPage = () => {
     if (currentPage !== numberOfPages) {
       setCurrentPage(currentPage + 1);
@@ -31,8 +30,6 @@ const { toggle } = props;
       setCurrentPage(currentPage - 1);
     }
   };
-
- 
 
   return (
     <section

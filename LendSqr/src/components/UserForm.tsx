@@ -3,8 +3,7 @@ import { UserContext } from "../App";
 // import Calendar from "../assets/np_calendar_2080577_000000 1.svg";
 
 const Form = () => {
-  const users = useContext(UserContext);
-  console.log(users)
+  let users = useContext(UserContext);
   const [organization, setOrganization] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -23,7 +22,7 @@ const Form = () => {
       const dateInput = new Date(user.createdAt).toDateString();
       return email === user.email && phone === user.phoneNumber && organization === user.orgName && username === user.userName && date === dateInput;
     });
-    setUsers(filteredUser);
+    users = filteredUser;
   };
 
   return (
