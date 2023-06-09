@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect, createContext, SetStateAction, Dispatch } from "react";
 import axios from "axios";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
@@ -15,11 +15,13 @@ interface User {
   id: string;
   orgName: string;
   lastActiveDate: string;
+  // eslint-disable-next-line no-empty-pattern
+  setUsers([]:User[]): Dispatch<SetStateAction<User[]>>
 }
 export const UserContext = createContext<User[]>([]);
 const Layout = () => {
   const [toggle, setToggle] = useState(false);
-  const [users, setUsers] = useState<Array<User>>([])
+  const [users, setUsers] = useState<User[]>([]);
   const lendsqrUsers = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users`;
   useEffect(() => {
     axios
