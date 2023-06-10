@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect, createContext, Dispatch, SetStateAction } from "react";
 import { createHashRouter, RouterProvider, Outlet } from "react-router-dom";
 import axios from "axios";
 import Login from "./components/Login";
@@ -16,7 +16,13 @@ export interface User {
   orgName: string;
   lastActiveDate: string;
 }
-export const UserContext = createContext({ users: [], setUsers: ((state: any) => state) });
+type UserState = {
+  setUsers: Dispatch<SetStateAction<never[]>>
+};
+const setState: UserState = {
+  setUsers: state => state
+};
+export const UserContext = createContext({ users: [], setUsers: setState.setUsers});
 export const ToggleContext = createContext(false);
 
 const Layout = () => {
@@ -34,7 +40,7 @@ const Layout = () => {
 
   return (
     <UserContext.Provider value={{ users, setUsers }}>
-      <ToggleContext.Provider value={toggle}>
+      <ToggleContext.Provider value={ toggle }>
         <Dashboard/>
         <Outlet />
       </ToggleContext.Provider>

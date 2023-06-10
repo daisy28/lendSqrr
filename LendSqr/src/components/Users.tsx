@@ -11,15 +11,15 @@ import UserForm from "./UserForm";
 import UserPage from "./Userpage";
 
 const Users = () => {
-  const users = useContext(UserContext);
+  const usersInfo = useContext(UserContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [infoPerPage] = useState(10);
   const [openModal, setOpenModal] = useState("0");
   const [openForm, setOpenForm] = useState(false);
   const indexOfLastInfo = currentPage * infoPerPage;
   const indexOfFirstInfo = indexOfLastInfo - infoPerPage;
-  const currentPageInfo = users.users.slice(indexOfFirstInfo, indexOfLastInfo);
-  const numberOfPages = Math.ceil(users.users.length / infoPerPage);
+  const currentPageInfo = usersInfo.users.slice(indexOfFirstInfo, indexOfLastInfo);
+  const numberOfPages = Math.ceil(usersInfo.users.length / infoPerPage);
  
   const nextPage = () => {
     if (currentPage !== numberOfPages) {
@@ -31,6 +31,10 @@ const Users = () => {
       setCurrentPage(currentPage - 1);
     }
   };
+
+  // const handleSingleUser = () => {
+  //   usersInfo.setUsers
+  // }
 
   return (
     <section
@@ -177,7 +181,10 @@ const Users = () => {
                         user.id === target.id ? setOpenModal(user.id) : null
                       }}>
                       <img src={Menu} alt="" id={user.id} />
-                      {openModal === user.id && <Modal userInfo={user} />}
+                      {openModal === user.id && <Modal />}
+                      {<div className={`hidden`}>
+                        <UserPage userInfo={usersInfo} />
+                        </div>}
                     </div>
                   </div>
                 </div>
