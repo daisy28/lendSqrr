@@ -5,14 +5,12 @@ import { User } from "../App";
 
 const Form = () => {
   const users = useContext(UserContext);
-  console.log(users)
   const [organization, setOrganization] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [date, setDate] = useState(Date);
   const [phone, setPhone] = useState("");
   const [status, setStatus] = useState("");
-  console.log(status)
  
   const formRef = useRef() as MutableRefObject<HTMLFormElement>;
   const resetForm = () => {
@@ -25,8 +23,7 @@ const Form = () => {
       const dateInput = new Date(user.createdAt).toDateString();
       return email === user.email && phone === user.phoneNumber && organization === user.orgName && username === user.userName && date === dateInput;
     });
-     console.log(filteredUser);
-     users.setUsers(filteredUser)
+     users.setUsers(filteredUser);
   };
 
   return (

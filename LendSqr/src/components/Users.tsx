@@ -8,6 +8,7 @@ import Menu from "../assets/Vector (4).svg";
 import Paginate from "./Paginate";
 import Modal from "./Modal";
 import UserForm from "./UserForm";
+import UserPage from "./Userpage";
 
 const Users = () => {
   const users = useContext(UserContext);
@@ -176,7 +177,7 @@ const Users = () => {
                         user.id === target.id ? setOpenModal(user.id) : null
                       }}>
                       <img src={Menu} alt="" id={user.id} />
-                      { openModal === user.id && <Modal /> }
+                      {openModal === user.id && <Modal userInfo={user} />}
                     </div>
                   </div>
                 </div>

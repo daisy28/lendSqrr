@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { useState, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Eye from "../assets/np_view_1214519_000000 1.svg";
 import BlacklistUser from "../assets/np_delete-friend_3248001_000000 1.svg";
 import ActivateUser from "../assets/np_user_2995993_000000 1.svg";
 import UserPage from "./Userpage";
 
-const Modal = () => {
+const Modal = ({ ...props }) => {
+  const { userInfo } = props
+  const fullUserInfoContext = createContext(userInfo)
+  console.log(userInfo)
+  console.log(fullUserInfoContext)
+
   const navigate = useNavigate()
   const [open, setOpen] = useState(false);
+
   return (
      <section className={`relative`}>
     <div
@@ -22,7 +28,9 @@ const Modal = () => {
               return !prevState
           })}
         >View Details
-        {open && <UserPage />}
+            {open && <fullUserInfoContext.Provider value={userInfo}>
+                <UserPage />
+        </fullUserInfoContext.Provider>}
         </div>
       </div>
       <div className={`flex items-center mb-6 cursor-pointer`}>
