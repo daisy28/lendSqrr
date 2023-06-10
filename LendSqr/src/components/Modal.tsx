@@ -6,11 +6,8 @@ import ActivateUser from "../assets/np_user_2995993_000000 1.svg";
 import UserPage from "./Userpage";
 
 const Modal = ({ ...props }) => {
-  const { userInfo } = props
-  const fullUserInfoContext = createContext(userInfo)
-  console.log(userInfo)
-  console.log(fullUserInfoContext)
-
+  const { userInfo } = props;
+  console.log(userInfo);
   const navigate = useNavigate()
   const [open, setOpen] = useState(false);
 
@@ -28,9 +25,7 @@ const Modal = ({ ...props }) => {
               return !prevState
           })}
         >View Details
-            {open && <fullUserInfoContext.Provider value={userInfo}>
-                <UserPage />
-        </fullUserInfoContext.Provider>}
+            {open && <UserPage />}
         </div>
       </div>
       <div className={`flex items-center mb-6 cursor-pointer`}>
