@@ -14,10 +14,6 @@
      width: calc(100% - 60px);
 }
 
-._section_width_resize {
-     width: calc(100% - 240px);
-}
-
 ._content {
      overflow-x: scroll !important;
 }

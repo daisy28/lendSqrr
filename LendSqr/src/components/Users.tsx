@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../App";
+import { User } from "../App";
 import style from "./style.module.css";
 import UserInfo from "../lib/userInfo";
 import Icon from "../assets/Vector (3).svg";
@@ -8,17 +9,16 @@ import Paginate from "./Paginate";
 import Modal from "./Modal";
 import UserForm from "./UserForm";
 
-const Users = ({ ...props }) => {
+const Users = () => {
   const users = useContext(UserContext);
-  const { toggle } = props;
   const [currentPage, setCurrentPage] = useState(1);
   const [infoPerPage] = useState(10);
-  const indexOfLastInfo = currentPage * infoPerPage;
-  const indexOfFirstInfo = indexOfLastInfo - infoPerPage;
-  const currentPageInfo = users.slice(indexOfFirstInfo, indexOfLastInfo);
-  const numberOfPages = Math.ceil(users.length / infoPerPage);
   const [openModal, setOpenModal] = useState("0");
   const [openForm, setOpenForm] = useState(false);
+  const indexOfLastInfo = currentPage * infoPerPage;
+  const indexOfFirstInfo = indexOfLastInfo - infoPerPage;
+  const currentPageInfo = users.users.slice(indexOfFirstInfo, indexOfLastInfo);
+  const numberOfPages = Math.ceil(users.users.length / infoPerPage);
  
   const nextPage = () => {
     if (currentPage !== numberOfPages) {
@@ -33,9 +33,7 @@ const Users = ({ ...props }) => {
 
   return (
     <section
-      className={`${
-        toggle ? `${style._section_width_resize}` : `${style._section_width}`
-      } mt-[100px] ml-auto bg-[#fbfbfb] relative  p-6 md:p-[3rem]`}
+      className={`${style._section_width} mt-[100px] ml-auto bg-[#fbfbfb] relative p-6 md:p-[3rem]`}
     >
       <div>
         <div className={``}>
@@ -126,7 +124,7 @@ const Users = ({ ...props }) => {
                 <img src={Icon} alt="" className={`ml-3 cursor-pointer`} />
               </div>
             </div>
-            {currentPageInfo.map((user) => {
+            {currentPageInfo.map((user: User) => {
               return (
                 <div className={`relative`} key={user.id}>
                   <div

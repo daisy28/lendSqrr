@@ -1,12 +1,12 @@
-import { useState, useEffect, createContext, SetStateAction, Dispatch } from "react";
+import { useState, useEffect, createContext } from "react";
+import { createHashRouter, RouterProvider, Outlet } from "react-router-dom";
 import axios from "axios";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import Users from "./components/Users";
 import UserPage from "./components/Userpage";
-import { createHashRouter, RouterProvider, Outlet } from "react-router-dom";
 
-interface User {
+export interface User {
   userName: string;
   email: string;
   phoneNumber: string;
@@ -15,13 +15,13 @@ interface User {
   id: string;
   orgName: string;
   lastActiveDate: string;
-  // eslint-disable-next-line no-empty-pattern
-  setUsers([]:User[]): Dispatch<SetStateAction<User[]>>
 }
-export const UserContext = createContext<User[]>([]);
+export const UserContext = createContext({ users: [], setUsers: ((state: any) => state) });
+export const ToggleContext = createContext(false);
+
 const Layout = () => {
-  const [toggle, setToggle] = useState(false);
-  const [users, setUsers] = useState<User[]>([]);
+  const [toggle] = useState(false);
+  const [users, setUsers] = useState([]);
   const lendsqrUsers = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users`;
   useEffect(() => {
     axios
@@ -32,18 +32,12 @@ const Layout = () => {
       .catch((err) => console.log(err));
   }, [lendsqrUsers]);
 
-  const handleToggle = ():boolean => {
-    setToggle(prevToggle => !prevToggle);
-    return toggle
-  }
-
   return (
-    <UserContext.Provider value={users}>
-      <Dashboard
-        toggle={toggle}
-        handletoggle={handleToggle}
-      />
-      <Outlet />
+    <UserContext.Provider value={{ users, setUsers }}>
+      <ToggleContext.Provider value={toggle}>
+        <Dashboard/>
+        <Outlet />
+      </ToggleContext.Provider>
     </UserContext.Provider>
   )
 }

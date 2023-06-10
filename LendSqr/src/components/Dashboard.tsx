@@ -1,19 +1,22 @@
-import Logo from "../assets/Group.svg";
+import { useState, useContext } from "react";
+import { ToggleContext } from "../App";
+import { Link, useLocation } from "react-router-dom";
 import { BsSearch, BsBell } from "react-icons/bs";
 import { MdArrowDropDown } from "react-icons/md";
+import Logo from "../assets/Group.svg";
 import UserImg from "../assets/image 4.svg";
 import Briefcase from "../assets/briefcase 1.svg";
 import Home from "../assets/home 1.svg";
-import { Link, useLocation } from "react-router-dom";
 import CustomerData from "../lib/customers";
 import BusinessData from "../lib/business";
 import SettingsData from "../lib/settings";
 import style from "./style.module.css";
 
-const Dashboard = ({...props}) => {
-  const { toggle, handletoggle } = props;
+const Dashboard = () => {
   const location = useLocation();
   const splitLocation = location.pathname;
+  const toggle = useContext(ToggleContext);
+  const [toggled, setToggled] = useState(toggle);
 
   return (
     <section className={``}>
@@ -67,14 +70,14 @@ const Dashboard = ({...props}) => {
         </div>
 
           <div
-            className={`${style._nav} ${toggle ? `w-[240px]` : `w-[60px]`} bg-[#fff] shadow-sm fixed overflow-y-scroll overflow-x-hidden top-[100px] bottom-0 left-0 z-20`}
+            className={`${style._nav} ${toggled ? `w-[240px]` : `w-[60px]`} bg-[#fff] shadow-sm fixed overflow-y-scroll overflow-x-hidden top-[100px] bottom-0 left-0 z-20`}
           >
           <MdArrowDropDown
-              className={`${toggle ? `left-[220px] rotate-90` : `left-[40px] -rotate-90`} w-[25px] h-[25px]  text-primaryColor cursor-pointer fixed top-[100px]`}
-              onClick={handletoggle}
+              className={`${toggled ? `left-[220px] rotate-90` : `left-[40px] -rotate-90`} w-[25px] h-[25px]  text-primaryColor cursor-pointer fixed top-[100px]`}
+              onClick={() => setToggled(prevState => !prevState)}
             />
             <div className={`bg-[rgba(255,255,255,0.05)]`}>
-            <div className={`${toggle ? `block` : `hidden`} relative px-4 mt-10 w-full mb-10 md:hidden`}>
+            <div className={`${toggled ? `block` : `hidden`} relative px-4 mt-10 w-full mb-10 md:hidden`}>
             <input
               type="text"
               name=""
@@ -94,7 +97,7 @@ const Dashboard = ({...props}) => {
                 <Link to="/" className={`flex items-center`}>
                   <img src={Briefcase} alt="" />
                   <p
-                    className={`${toggle ? `block` : `hidden`} font-Work Sans text-primaryColor text-[16px] leading-[19px] ml-2`}
+                    className={`${toggled ? `block` : `hidden`} font-Work Sans text-primaryColor text-[16px] leading-[19px] ml-2`}
                   >
                     Switch Organization
                   </p>
@@ -107,7 +110,7 @@ const Dashboard = ({...props}) => {
                 <Link to="/" className={`flex items-center`}>
                   <img src={Home} alt="" />
                   <p
-                    className={`${toggle ? `block` : `hidden`} font-Work Sans text-primaryColor text-[16px] leading-[19px] ml-2`}
+                    className={`${toggled ? `block` : `hidden`} font-Work Sans text-primaryColor text-[16px] leading-[19px] ml-2`}
                   >
                     Dashboard
                   </p>
@@ -115,7 +118,7 @@ const Dashboard = ({...props}) => {
               </div>
               <div>
                 <p
-                  className={`${toggle ? `text-[12px]` : `text-[.4rem]`} uppercase text-textColor font-[500] leading-[14px] mb-6 px-4`}
+                  className={`${toggled ? `text-[12px]` : `text-[.4rem]`} uppercase text-textColor font-[500] leading-[14px] mb-6 px-4`}
                 >
                   Customers
                 </p>
@@ -127,7 +130,7 @@ const Dashboard = ({...props}) => {
                       <Link to={data.route} className={`flex items-center`}>
                         <img src={data.img} alt="" />
                         <p
-                          className={`${toggle ? `block` : `hidden`} font-Work Sans text-primaryColor text-[16px] leading-[19px] ml-2 `}
+                          className={`${toggled ? `block` : `hidden`} font-Work Sans text-primaryColor text-[16px] leading-[19px] ml-2 `}
                         >
                           {data.link}
                         </p>
@@ -139,7 +142,7 @@ const Dashboard = ({...props}) => {
 
               <div>
                 <p
-                  className={`${toggle ? `text-[12px]` : `text-[.4rem]`} uppercase text-textColor font-[500] leading-[14px] mb-6 px-4`}
+                  className={`${toggled ? `text-[12px]` : `text-[.4rem]`} uppercase text-textColor font-[500] leading-[14px] mb-6 px-4`}
                 >
                   Businesses
                 </p>
@@ -151,7 +154,7 @@ const Dashboard = ({...props}) => {
                       <Link to="/" className={`flex items-center`}>
                         <img src={data.img} alt="" />
                         <p
-                          className={`${toggle ? `block` : `hidden`} font-Work Sans text-primaryColor text-[16px] leading-[19px] ml-2 ${splitLocation === `/${data.link}` ? `bg-[rgba(57,205,205,0.06)] border-left border-secondaryColor` : ``}`}
+                          className={`${toggled ? `block` : `hidden`} font-Work Sans text-primaryColor text-[16px] leading-[19px] ml-2 ${splitLocation === `/${data.link}` ? `bg-[rgba(57,205,205,0.06)] border-left border-secondaryColor` : ``}`}
                         >
                           {data.link}
                         </p>
@@ -162,7 +165,7 @@ const Dashboard = ({...props}) => {
               </div>
               <div>
                 <p
-                  className={`${toggle ? `text-[12px]` : `text-[.4rem]`} uppercase text-textColor font-[500] leading-[14px] mb-6 px-4`}
+                  className={`${toggled ? `text-[12px]` : `text-[.4rem]`} uppercase text-textColor font-[500] leading-[14px] mb-6 px-4`}
                 >
                   Settings
                 </p>
@@ -174,7 +177,7 @@ const Dashboard = ({...props}) => {
                       <Link to="/" className={`flex items-center`}>
                         <img src={data.img} alt="" />
                         <p
-                          className={`${toggle ? `block` : `hidden`} font-Work Sans text-primaryColor text-[16px] leading-[19px] ml-2 ${splitLocation === `/${data.link}` ? `bg-[rgba(57,205,205,0.06)] border-left border-secondaryColor` : ``}`}
+                          className={`${toggled ? `block` : `hidden`} font-Work Sans text-primaryColor text-[16px] leading-[19px] ml-2 ${splitLocation === `/${data.link}` ? `bg-[rgba(57,205,205,0.06)] border-left border-secondaryColor` : ``}`}
                         >
                           {data.link}
                         </p>

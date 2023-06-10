@@ -1,5 +1,6 @@
 import { useState, useContext, MutableRefObject, useRef } from "react";
 import { UserContext } from "../App";
+import { User } from "../App";
 // import Calendar from "../assets/np_calendar_2080577_000000 1.svg";
 
 const Form = () => {
@@ -20,14 +21,12 @@ const Form = () => {
 
    const filterUsers = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    const filteredUser = users.filter((user) => {
+    const filteredUser = users.users.filter((user: User) => {
       const dateInput = new Date(user.createdAt).toDateString();
       return email === user.email && phone === user.phoneNumber && organization === user.orgName && username === user.userName && date === dateInput;
     });
      console.log(filteredUser);
-    users.forEach(user => user.setUsers(filteredUser))
-
-    //  setUsers(filteredUser);
+     users.setUsers(filteredUser)
   };
 
   return (
@@ -52,7 +51,7 @@ const Form = () => {
                 onChange={(e) => setOrganization(e.target.value)}
               >
                   <option value="" disabled>--Choose--</option>
-                  {users.map((user) => {
+                  {users.users.map((user: User) => {
                     return <option value={user.orgName} key={user.id} className={``}>{user.orgName}</option>
                   })}
               </select>
