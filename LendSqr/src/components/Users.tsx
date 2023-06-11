@@ -32,9 +32,9 @@ const Users = () => {
     }
   };
 
-  // const handleSingleUser = () => {
-  //   usersInfo.setUsers
-  // }
+  const handleSingleUser = () => {
+   usersInfo.setUsers
+  }
 
   return (
     <section
