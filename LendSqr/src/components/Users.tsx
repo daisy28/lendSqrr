@@ -32,9 +32,13 @@ const Users = () => {
     }
   };
 
-  const handleSingleUser = () => {
-   usersInfo.setUsers
-  }
+  // const handleModal = (e: React.ChangeEvent<Element>, user: string) => {
+  //   user === e.target.id ? setOpenModal(user) : null
+  // }
+
+  // const handleSingleUser = () => {
+  //   usersInfo.setUsers
+  // }
 
   return (
     <section
@@ -178,13 +182,13 @@ const Users = () => {
                       className={`cursor-pointer mt-3 absolute right-0 top-[15px]`}
                       onClick={(e) => {
                         const target = e.target as Element
-                        user.id === target.id ? setOpenModal(user.id) : null
+                        if (user.id === target.id) {
+                          setOpenModal(user.id);
+                          localStorage.setItem("userInfo", JSON.stringify(user))
+                        }
                       }}>
                       <img src={Menu} alt="" id={user.id} />
                       {openModal === user.id && <Modal />}
-                      {<div className={`hidden`}>
-                        <UserPage userInfo={usersInfo} />
-                        </div>}
                     </div>
                   </div>
                 </div>

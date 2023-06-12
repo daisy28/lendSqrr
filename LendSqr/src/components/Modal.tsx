@@ -3,11 +3,9 @@ import { useNavigate } from "react-router-dom";
 import Eye from "../assets/np_view_1214519_000000 1.svg";
 import BlacklistUser from "../assets/np_delete-friend_3248001_000000 1.svg";
 import ActivateUser from "../assets/np_user_2995993_000000 1.svg";
-import UserPage from "./Userpage";
 
 const Modal = () => {
-  const navigate = useNavigate()
-  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <section className={`relative`}>
@@ -17,13 +15,8 @@ const Modal = () => {
       <div className={`flex items-center mb-6 cursor-pointer`}>
         <img src={Eye} alt="" />
           <div className={`ml-3 text-textColor font-Work Sans font-[500] text-[14px] leading-[16px]`}
-            onClick={() => setOpen(prevState => {
-              !prevState;
-              navigate("user-page");
-              return !prevState;
-          })}
+            onClick={() => navigate("user-page") }
         >View Details
-            {open && <UserPage />}
         </div>
       </div>
       <div className={`flex items-center mb-6 cursor-pointer`}>
