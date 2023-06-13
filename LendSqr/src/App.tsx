@@ -33,12 +33,21 @@ type socials = {
   twitter: string;
 }
 
+type guarantor = {
+  address: string;
+  firstName: string;
+  gender: string;
+  lastName: string;
+  phoneNumber: string;
+}
+
 export interface User {
   accountBalance: string;
   accountNumber: string;
   createdAt: Date;
   email: string;
   education: education;
+  guarantor: guarantor;
   id: string;
   orgName: string;
   profile: profile;

@@ -26,7 +26,7 @@ const UserPage = () => {
           </div>
         </div>
         <div className={`bg-white border border-[rgba(33, 63, 125, 0.06)] shadow-md rounded-[4px] p-4 py-8 md:py-0 md:pt-8 md:px-6 mb-6`}>
-          <div className={`md:grid gap-4 mb-8 grid-flow-col-dense`}>
+          <div className={`md:grid gap-4 mb-10 grid-flow-col-dense`}>
             <div className={`flex items-center border-b border-[rgba(33,64,125,0.15)] mb-6 pb-6 md:border-b-0 md:border-r md:mb-0 md:pb-0`}>
             <img src={users.profile.avatar} alt="" className={`w-[60px] h-[60px] rounded-full`} />
             <div className={`ml-4`}>
@@ -34,7 +34,7 @@ const UserPage = () => {
               <p className={`text-[14px] leading-[16px] text-textColor`}>{users.accountNumber}</p>
             </div>
           </div>
-          <div className={`border-b border-[rgba(33,64,125,0.15)] mb-4 pb-6 md:border-b-0 md:border-r md:mb-0 md:pb-0 md:flex items-center`}>
+          <div className={`border-b border-[rgba(33,64,125,0.15)] mb-4 pb-6 md:border-b-0 md:border-r md:mb-0 md:pb-0 md:flex items-center justify-center`}>
             <div className={``}>
               <p className={`text-[14px] leading-[16px] font-[500] text-textColor mb-2`}>User's Tier</p>
               <div className={`w-20 flex justify-between items-center`}>
@@ -53,7 +53,7 @@ const UserPage = () => {
             </div>
           </div>
           </div>
-          <div className={`grid grid-rows-5 w-[150px] md:w-[100%] md:grid-flow-col-dense md:grid-rows-none md:gap-4`}>
+          <div className={`grid grid-rows-5 w-[150px] text-center md:w-[100%] md:grid-flow-col-dense md:grid-rows-none md:gap-4`}>
             <div className={`text-[16px] leading-[19px] text-secondaryColor border-b border-secondaryColor mb-2 pb-2 md:mb-0`}>General details</div>
             <div className={`text-[16px] leading-[19px] text-[rgba(0, 0, 0, 0.8)] mb-2 pb-2 md:mb-0`}>Documents</div>
             <div className={`text-[16px] leading-[19px] text-[rgba(0, 0, 0, 0.8)] mb-2 pb-2 md:mb-0`}>Bank details</div>
@@ -167,7 +167,7 @@ const UserPage = () => {
                     Socials
                   </h1>
                 </div>
-                <div className={`relative grid grid-cols-1 md:grid-cols-3 overflow-scroll gap-4 md:gap-0 md:w-[1000px] border-b border-[rgba(33,64,125,0.15)] pb-4 xl:w-[100%]`}>
+                <div className={`relative grid grid-cols-1 md:grid-cols-4 overflow-scroll gap-4 md:gap-0 md:w-[1000px] border-b border-[rgba(33,64,125,0.15)] pb-4 xl:w-[100%]`}>
                   <div className={`grid mb-4`}>
                     <div className={``}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Twitter</h1>
@@ -184,6 +184,40 @@ const UserPage = () => {
                     <div className={`mb-4`}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>instagram</h1>
                       <p className={`w-[174px] font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.socials.instagram}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+               <div className={`my-8`}>
+                <div className={`relative`}>
+                  <h1 className={`text-primaryColor font-[500] text-[16px] leading-[19px] mb-8`}>
+                    Guarantor
+                  </h1>
+                </div>
+                <div className={`relative grid grid-cols-1 md:grid-cols-4 overflow-scroll gap-4 md:gap-0 md:w-[1000px] pb-4 xl:w-[100%]`}>
+                  <div className={`grid mb-4`}>
+                    <div className={``}>
+                      <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Full Name</h1>
+                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.guarantor.firstName} {users.guarantor.lastName}</p>
+                  </div>
+                  </div>
+                  <div className={`grid`}>
+                    <div className={`mb-4`}>
+                      <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Phone Number</h1>
+                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.guarantor.phoneNumber}</p>
+                    </div>
+                  </div>
+                  <div className={`grid`}>
+                    <div className={`mb-4`}>
+                      <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>House Address</h1>
+                      <p className={`w-[174px] font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.guarantor.address}</p>
+                    </div>
+                  </div>
+                  <div className={`grid`}>
+                    <div className={`mb-4`}>
+                      <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Gender</h1>
+                      <p className={`w-[174px] font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.guarantor.gender}</p>
                     </div>
                   </div>
                 </div>
