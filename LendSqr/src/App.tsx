@@ -27,6 +27,12 @@ type education = {
   sector: string;
 }
 
+type socials = {
+  facebook: string;
+  instagram: string;
+  twitter: string;
+}
+
 export interface User {
   accountBalance: string;
   accountNumber: string;
@@ -36,6 +42,7 @@ export interface User {
   id: string;
   orgName: string;
   profile: profile;
+  socials: socials;
   userName: string;
 }
 
