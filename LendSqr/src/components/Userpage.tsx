@@ -64,13 +64,14 @@ const UserPage = () => {
 
         <div className={`bg-white border border-[rgba(33, 63, 125, 0.06)] shadow-md rounded-[4px] p-4 md:p-8`}>
           <div>
-            <div>
+            
+            <div className={`overflow-scroll`}>
+              <div>
               <h1 className={`text-primaryColor font-[500] text-[16px] leading-[19px] mb-8`}>
                 Personal Information
               </h1>
             </div>
-            <div className={`overflow-scroll`}>
-              <div className={`grid grid-cols-1 md:grid-cols-5 overflow-scroll gap-4 md:gap-8 md:w-[1000px] border-b border-primaryColor`}>
+              <div className={`grid grid-cols-1 md:grid-cols-5 overflow-scroll gap-4 md:gap-8 md:w-[1000px] border-b border-primaryColor xl:w-[100%]`}>
               <div className={`grid grid-rows-2 md:gap-4`}>
                 <div className={``}>
                   <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Full Name</h1>
@@ -96,7 +97,7 @@ const UserPage = () => {
                   <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Email Address</h1>
                   <p className={`w-[174px] font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.email}</p>
                 </div>
-                <div className={`mb-4`}>
+                <div className={``}>
                   <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Type of Residence</h1>
                   <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>Parent's Apartment</p>
                 </div>
@@ -112,6 +113,52 @@ const UserPage = () => {
                   <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Gender</h1>
                   <p className={`font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.profile.gender}</p>
                 </div>
+              </div>
+              </div>
+
+              <div className={`my-8`}>
+                <div className={`relative`}>
+                <h1 className={`text-primaryColor font-[500] text-[16px] leading-[19px] mb-8`}>
+                  Education and Employment
+                </h1>
+              </div>
+              <div className={`relative grid grid-cols-1 md:grid-cols-4 overflow-scroll gap-4 md:gap-8 md:w-[1000px] border-b border-primaryColor pb-4 xl:w-[100%]`}>
+              <div className={`grid grid-rows-2 md:gap-4`}>
+                <div className={``}>
+                  <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Level of Education</h1>
+                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.education.level}</p>
+                </div>
+                <div className={`mb-4`}>
+                  <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Office Email</h1>
+                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.education.officeEmail}</p>
+                </div>
+              </div>
+              <div className={`grid grid-rows-2 md:gap-4`}>
+                <div className={`mb-4`}>
+                  <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Employment Status</h1>
+                  <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.education.employmentStatus}</p>
+                </div>
+                <div className={`mb-4`}>
+                  <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Monthly Income</h1>
+                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.profile.currency}{users.education.monthlyIncome[0]} - {users.profile.currency}{users.education.monthlyIncome[1]}</p>
+                </div>
+              </div>
+              <div className={`grid grid-rows-2 md:gap-4`}>
+                <div className={`mb-4`}>
+                  <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Sector of Employment</h1>
+                  <p className={`w-[174px] font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.education.sector}</p>
+                </div>
+                <div className={`mb-4`}>
+                  <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Loan Repayment</h1>
+                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.education.loanRepayment}</p>
+                </div>
+              </div>
+              <div className={`grid grid-cols-1 mb-4 md:mb-0`}>
+                <div className={``}>
+                  <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Duration of Employment</h1>
+                  <p className={`font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.education.duration}</p>
+                </div>
+              </div>
               </div>
               </div>
             </div>

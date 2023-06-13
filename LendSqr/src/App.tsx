@@ -17,11 +17,22 @@ type profile = {
   phoneNumber: string;
 }
 
+type education = {
+  duration: string;
+  employmentStatus: string;
+  level: string;
+  loanRepayment: string
+  monthlyIncome: string[];
+  officeEmail: string;
+  sector: string;
+}
+
 export interface User {
   accountBalance: string;
   accountNumber: string;
   createdAt: Date;
   email: string;
+  education: education;
   id: string;
   orgName: string;
   profile: profile;
