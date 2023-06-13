@@ -6,16 +6,28 @@ import Dashboard from "./components/Dashboard";
 import Users from "./components/Users";
 import UserPage from "./components/Userpage";
 
-export interface User {
-  userName: string;
-  email: string;
+type profile = {
+  address: string;
+  avatar: string;
+  bvn: string;
+  currency: string;
+  firstName: string;
+  gender: string;
+  lastName: string;
   phoneNumber: string;
-  date: object;
+}
+
+export interface User {
+  accountBalance: string;
+  accountNumber: string;
   createdAt: Date;
+  email: string;
   id: string;
   orgName: string;
-  lastActiveDate: string;
+  profile: profile;
+  userName: string;
 }
+
 type UserState = {
   setUsers: Dispatch<SetStateAction<never[]>>
 };

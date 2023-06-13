@@ -8,7 +8,6 @@ import Menu from "../assets/Vector (4).svg";
 import Paginate from "./Paginate";
 import Modal from "./Modal";
 import UserForm from "./UserForm";
-import UserPage from "./Userpage";
 
 const Users = () => {
   const usersInfo = useContext(UserContext);
@@ -31,14 +30,6 @@ const Users = () => {
       setCurrentPage(currentPage - 1);
     }
   };
-
-  // const handleModal = (e: React.ChangeEvent<Element>, user: string) => {
-  //   user === e.target.id ? setOpenModal(user) : null
-  // }
-
-  // const handleSingleUser = () => {
-  //   usersInfo.setUsers
-  // }
 
   return (
     <section
@@ -158,7 +149,7 @@ const Users = () => {
                     <p
                       className={`font-Work Sans font-[400] text-[12px] leading-[14px] text-textColor`}
                     >
-                      {user.phoneNumber}
+                      {user.profile.phoneNumber}
                     </p>
                     <p
                       className={`font-Work Sans font-[400] text-[12px] leading-[14px] text-textColor`}
