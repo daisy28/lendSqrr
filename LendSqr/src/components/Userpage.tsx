@@ -2,11 +2,13 @@ import { useNavigate } from "react-router-dom";
 import { BsArrowLeft, BsStarFill, BsStar } from "react-icons/bs";
 import { User } from "../App";
 import style from "./style.module.css";
+import { useState } from "react";
 
 const UserPage = () => {
   const navigate = useNavigate();
-  const users: User = JSON.parse(localStorage.getItem("userInfo"))
-  console.log(users);
+  const users: User = JSON.parse(localStorage.getItem("userInfo"));
+  const [mainCategory, setMainCategory] = useState("General Details")
+  const categories = ["General Details", "Documents", "Bank Details", "Loans", "Savings"];
   
   return (
     <section className={`${style._section_width} font-Work Sans mt-[100px] ml-auto bg-[#fbfbfb] relative p-6 md:p-[3rem]`}>
@@ -37,10 +39,10 @@ const UserPage = () => {
           <div className={`border-b border-[rgba(33,64,125,0.15)] mb-4 pb-6 md:border-b-0 md:border-r md:mb-0 md:pb-0 md:flex items-center justify-center`}>
             <div className={``}>
               <p className={`text-[14px] leading-[16px] font-[500] text-textColor mb-2`}>User's Tier</p>
-              <div className={`w-20 flex justify-between items-center`}>
-                <BsStarFill className={`text-pending`} />
-                <BsStar className={`text-pending`} />
-                <BsStar className={`text-pending`} />
+              <div className={`w-20 flex justify-between items-center text-pending`}>
+                <BsStarFill className={``} />
+                <BsStar className={``} />
+                <BsStar className={``} />
               </div>
             </div>
           </div>
@@ -53,16 +55,21 @@ const UserPage = () => {
             </div>
           </div>
           </div>
-          <div className={`grid grid-rows-5 w-[150px] md:text-center md:w-[100%] md:grid-flow-col-dense md:grid-rows-none md:gap-4`}>
-            <div className={`text-[16px] leading-[19px] text-secondaryColor border-b-2 border-secondaryColor mb-2 pb-2 md:mb-0 cursor-pointer`}>General details</div>
-            <div className={`text-[16px] leading-[19px] text-[rgba(0, 0, 0, 0.8)] mb-2 pb-2 md:mb-0 cursor-pointer`}>Documents</div>
-            <div className={`text-[16px] leading-[19px] text-[rgba(0, 0, 0, 0.8)] mb-2 pb-2 md:mb-0 cursor-pointer`}>Bank details</div>
-            <div className={`text-[16px] leading-[19px] text-[rgba(0, 0, 0, 0.8)] mb-2 pb-2 md:mb-0 cursor-pointer`}>Loans</div>
-            <div className={`text-[16px] leading-[19px] text-[rgba(0, 0, 0, 0.8)] mb-2 pb-2 md:mb-0 cursor-pointer`}>Savings</div>
+          <div className={`grid grid-rows-5 w-[150px] md:text-center md:w-[100%] md:grid-flow-col-dense md:grid-rows-none md:gap-4`}> {
+            categories.map(category => {
+              return <div
+                id={category}
+                onClick={(e) =>
+                {const target = e.target as Element
+                  if (category === target.id) {
+                    setMainCategory(category)}}}
+                key={category}
+                className={`text-[16px] leading-[19px] mb-2 pb-2 md:mb-0 cursor-pointer ${mainCategory === category ? `text-secondaryColor border-b-2 border-secondaryColor` : `text-[rgba(0, 0, 0, 0.8)] border-0`}`}>{category}</div>
+            })}
           </div>
         </div>
 
-        <div className={`bg-white border border-[rgba(33, 63, 125, 0.06)] shadow-md rounded-[4px] p-4 md:p-8 overflow-x-scroll`}>
+        <div className={`${style._content} bg-white border border-[rgba(33, 63, 125, 0.06)] shadow-md rounded-[4px] p-4 md:p-8 overflow-x-scroll`}>
           <div className={``}>
             <div className={``}>
               <div>

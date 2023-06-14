@@ -7,7 +7,7 @@ const Paginate = ({ ...props }) => {
     nextPage,
     setCurrentPage,
     currentPage,
-    currentPageInfo,
+    currentPageInfo
   } = props;
   const pageNumbers: number[] = [...Array(numberOfPages + 1).keys()].slice(1);
 

@@ -23,6 +23,7 @@ const Form = () => {
       const dateInput = new Date(user.createdAt).toDateString();
       return email === user.email && phone === user.profile.phoneNumber && organization === user.orgName && username === user.userName && date === dateInput;
     });
+     console.log(status)
      users.setUsers(filteredUser);
   };
 
