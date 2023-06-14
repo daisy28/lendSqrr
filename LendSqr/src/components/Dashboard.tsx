@@ -14,7 +14,7 @@ import style from "./style.module.css";
 
 const Dashboard = () => {
   const searchRef = useRef() as MutableRefObject<HTMLFormElement>;
-  const users: User = JSON.parse(localStorage.getItem("userInfo"))
+  const users: User = JSON.parse(localStorage.getItem("userInfo") || "false")
   const location = useLocation();
   const splitLocation = location.pathname;
   const toggle = useContext(ToggleContext);

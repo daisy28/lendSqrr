@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const UserPage = () => {
   const navigate = useNavigate();
-  const users: User = JSON.parse(localStorage.getItem("userInfo"));
+  const users: User = JSON.parse(localStorage.getItem("userInfo") || "false");
   const [mainCategory, setMainCategory] = useState("General Details")
   const categories = ["General Details", "Documents", "Bank Details", "Loans", "Savings"];
   
