@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Eye from "../assets/np_view_1214519_000000 1.svg";
 import BlacklistUser from "../assets/np_delete-friend_3248001_000000 1.svg";

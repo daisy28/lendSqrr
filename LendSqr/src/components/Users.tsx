@@ -15,6 +15,7 @@ const Users = () => {
   const [infoPerPage] = useState(10);
   const [openModal, setOpenModal] = useState("0");
   const [openForm, setOpenForm] = useState(false);
+  const [form, setForm] = useState("0");
   const indexOfLastInfo = currentPage * infoPerPage;
   const indexOfFirstInfo = indexOfLastInfo - infoPerPage;
   const currentPageInfo = usersInfo.users.slice(indexOfFirstInfo, indexOfLastInfo);
@@ -30,6 +31,16 @@ const Users = () => {
       setCurrentPage(currentPage - 1);
     }
   };
+
+  type Header = { name: string, id: string };
+  const headers = [
+    { name: "Organization", id: "0" },
+    { name: "Username", id: "1" },
+    { name: "Email", id: "2" },
+    { name: "Phone Number", id: "3" },
+    { name: "Date Joined", id: "4" },
+    { name: "Status", id: "5" }
+  ];
 
   return (
     <section
@@ -73,56 +84,26 @@ const Users = () => {
         >
           <div className={`w-[1100px] p-6`}>
             <div className={`grid grid-cols-6 gap-8 mb-6`}>
-              <div className={`flex items-center relative`}>
+              {
+                headers.map((header: Header) => {
+                  return <div className={`flex items-center relative`} key={header.id}>
                 <p
                   className={`font-Work Sans font-[600] text-[12px] leading-[14px] uppercase text-textColor cursor-pointer`}
-                  onClick={() => setOpenForm(prevState => !prevState)}
                 >
-                  Organization
+                 {header.name}
                 </p>
-                <img src={Icon} alt="" className={`ml-3 cursor-pointer`} />
-                {openForm && <UserForm />}
+                    <img src={Icon} alt=""
+                      className={`ml-3 cursor-pointer`}
+                      id={header.id}
+                      onClick={(e) =>
+                      {const target = e.target as Element
+                        if (header.id === target.id) {
+                          setForm(header.id)
+                          setOpenForm(prevState => !prevState)}}}
+                    />
+                      {form === header.id && openForm ? <UserForm /> : null}
               </div>
-              <div className={`flex items-center relative`}>
-                <p
-                  className={`font-Work Sans font-[600] text-[12px] leading-[14px] uppercase text-textColor`}
-                >
-                  Username
-                </p>
-                <img src={Icon} alt="" className={`ml-3 cursor-pointer`} />
-              </div>
-              <div className={`flex items-center relative`}>
-                <p
-                  className={`font-Work Sans font-[600] text-[12px] leading-[14px] uppercase text-textColor`}
-                >
-                  Email
-                </p>
-                <img src={Icon} alt="" className={`ml-3 cursor-pointer`} />
-              </div>
-              <div className={`flex items-center relative`}>
-                <p
-                  className={`font-Work Sans font-[600] text-[12px] leading-[14px] uppercase text-textColor`}
-                >
-                  Phone Number
-                </p>
-                <img src={Icon} alt="" className={`ml-3 cursor-pointer`} />
-              </div>
-              <div className={`flex items-center relative`}>
-                <p
-                  className={`font-Work Sans font-[600] text-[12px] leading-[14px] uppercase text-textColor`}
-                >
-                  Date Joined
-                </p>
-                <img src={Icon} alt="" className={`ml-2 cursor-pointer`} />
-              </div>
-              <div className={`flex items-center relative`}>
-                <p
-                  className={`font-Work Sans font-[600] text-[12px] leading-[14px] uppercase text-textColor`}
-                >
-                  Status
-                </p>
-                <img src={Icon} alt="" className={`ml-3 cursor-pointer`} />
-              </div>
+                })}
             </div>
             {currentPageInfo.map((user: User) => {
               return (
@@ -164,10 +145,10 @@ const Users = () => {
                     ${new Date(user.createdAt).getFullYear() < 2010 && `bg-[rgba(228,3,59,0.14)] text-[rgb(228,3,59)] text-center rounded-[100px] flex items-center justify-center w-[95px]`} 
                       `}
                     >
-                      {new Date(user.createdAt).getFullYear() < 2010 ? `Blacklisted` : `` 
-                      || new Date(user.createdAt).getFullYear() < 2030 ? `Inactive` : ``
-                      || new Date(user.createdAt).getFullYear() <= 2089 ? `Active` : ``  
-                      || new Date(user.createdAt).getFullYear() > 2089 ? `Pending` : `` }
+                      {new Date(user.createdAt).getFullYear() < 2010 && `Blacklisted` 
+                      || new Date(user.createdAt).getFullYear() < 2030 && `Inactive`
+                      || new Date(user.createdAt).getFullYear() <= 2089 && `Active`
+                      || new Date(user.createdAt).getFullYear() > 2089 && `Pending`}
                     </p>
                     <div
                       className={`cursor-pointer mt-3 absolute right-0 top-[15px]`}

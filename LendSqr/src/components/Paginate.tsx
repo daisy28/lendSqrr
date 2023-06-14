@@ -55,7 +55,7 @@ const Paginate = ({ ...props }) => {
                 <span
                   onClick={() => setCurrentPage(number)}
                   className={`cursor-pointer ${
-                    currentPage == number
+                    currentPage === number
                       ? `text-textColor`
                       : `text-[rgba(84,95,125,0.6)]`
                   }`}

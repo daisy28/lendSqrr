@@ -12,7 +12,7 @@ const UserPage = () => {
     <section className={`${style._section_width} font-Work Sans mt-[100px] ml-auto bg-[#fbfbfb] relative p-6 md:p-[3rem]`}>
       <div>
         <div
-          className={`flex items-center mb-8 cusrsor-pointer`}
+          className={`flex items-center mb-8 cursor-pointer`}
           onClick={() => navigate("/dashboard")}
         >
           <BsArrowLeft className={`text-[16px] leading-[18.7px] text-textColor`} />
@@ -53,24 +53,24 @@ const UserPage = () => {
             </div>
           </div>
           </div>
-          <div className={`grid grid-rows-5 w-[150px] text-center md:w-[100%] md:grid-flow-col-dense md:grid-rows-none md:gap-4`}>
-            <div className={`text-[16px] leading-[19px] text-secondaryColor border-b border-secondaryColor mb-2 pb-2 md:mb-0`}>General details</div>
-            <div className={`text-[16px] leading-[19px] text-[rgba(0, 0, 0, 0.8)] mb-2 pb-2 md:mb-0`}>Documents</div>
-            <div className={`text-[16px] leading-[19px] text-[rgba(0, 0, 0, 0.8)] mb-2 pb-2 md:mb-0`}>Bank details</div>
-            <div className={`text-[16px] leading-[19px] text-[rgba(0, 0, 0, 0.8)] mb-2 pb-2 md:mb-0`}>Loans</div>
-            <div className={`text-[16px] leading-[19px] text-[rgba(0, 0, 0, 0.8)] mb-2 pb-2 md:mb-0`}>Savings</div>
+          <div className={`grid grid-rows-5 w-[150px] md:text-center md:w-[100%] md:grid-flow-col-dense md:grid-rows-none md:gap-4`}>
+            <div className={`text-[16px] leading-[19px] text-secondaryColor border-b-2 border-secondaryColor mb-2 pb-2 md:mb-0 cursor-pointer`}>General details</div>
+            <div className={`text-[16px] leading-[19px] text-[rgba(0, 0, 0, 0.8)] mb-2 pb-2 md:mb-0 cursor-pointer`}>Documents</div>
+            <div className={`text-[16px] leading-[19px] text-[rgba(0, 0, 0, 0.8)] mb-2 pb-2 md:mb-0 cursor-pointer`}>Bank details</div>
+            <div className={`text-[16px] leading-[19px] text-[rgba(0, 0, 0, 0.8)] mb-2 pb-2 md:mb-0 cursor-pointer`}>Loans</div>
+            <div className={`text-[16px] leading-[19px] text-[rgba(0, 0, 0, 0.8)] mb-2 pb-2 md:mb-0 cursor-pointer`}>Savings</div>
           </div>
         </div>
 
-        <div className={`bg-white border border-[rgba(33, 63, 125, 0.06)] shadow-md rounded-[4px] p-4 md:p-8`}>
-          <div>
-            <div className={`overflow-scroll`}>
+        <div className={`bg-white border border-[rgba(33, 63, 125, 0.06)] shadow-md rounded-[4px] p-4 md:p-8 overflow-x-scroll`}>
+          <div className={``}>
+            <div className={``}>
               <div>
               <h1 className={`text-primaryColor font-[500] text-[16px] leading-[19px] mb-8`}>
                 Personal Information
               </h1>
               </div>
-              <div className={`grid grid-cols-1 md:grid-cols-5 overflow-scroll gap-4 md:gap-8 md:w-[1000px] border-b border-[rgba(33,64,125,0.15)] xl:w-[100%]`}>
+              <div className={`grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-8 md:w-[1000px] border-b border-[rgba(33,64,125,0.15)] xl:w-[100%]`}>
               <div className={`grid grid-rows-2 md:gap-4`}>
                 <div className={``}>
                   <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Full Name</h1>
@@ -121,7 +121,7 @@ const UserPage = () => {
                     Education and Employment
                   </h1>
                 </div>
-                <div className={`relative grid grid-cols-1 md:grid-cols-4 overflow-scroll gap-4 md:gap-8 md:w-[1000px] border-b border-[rgba(33,64,125,0.15)] pb-4 xl:w-[100%]`}>
+                <div className={`relative grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 md:w-[1000px] border-b border-[rgba(33,64,125,0.15)] pb-4 xl:w-[100%]`}>
                   <div className={`grid grid-rows-2 md:gap-4`}>
                     <div className={``}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Level of Education</h1>
@@ -167,7 +167,7 @@ const UserPage = () => {
                     Socials
                   </h1>
                 </div>
-                <div className={`relative grid grid-cols-1 md:grid-cols-4 overflow-scroll gap-4 md:gap-0 md:w-[1000px] border-b border-[rgba(33,64,125,0.15)] pb-4 xl:w-[100%]`}>
+                <div className={`relative grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-0 md:w-[1000px] border-b border-[rgba(33,64,125,0.15)] pb-4 xl:w-[100%]`}>
                   <div className={`grid mb-4`}>
                     <div className={``}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Twitter</h1>
@@ -195,7 +195,7 @@ const UserPage = () => {
                     Guarantor
                   </h1>
                 </div>
-                <div className={`relative grid grid-cols-1 md:grid-cols-4 overflow-scroll gap-4 md:gap-0 md:w-[1000px] pb-4 xl:w-[100%]`}>
+                <div className={`relative grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-0 md:w-[1000px] pb-4 xl:w-[100%]`}>
                   <div className={`grid mb-4`}>
                     <div className={``}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Full Name</h1>

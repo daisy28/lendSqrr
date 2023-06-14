@@ -1,10 +1,11 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useRef, MutableRefObject} from "react";
 import { ToggleContext } from "../App";
 import { Link, useLocation } from "react-router-dom";
 import { BsSearch, BsBell } from "react-icons/bs";
 import { MdArrowDropDown } from "react-icons/md";
+import { User } from "../App";
 import Logo from "../assets/Group.svg";
-import UserImg from "../assets/image 4.svg";
+// import UserImg from "../assets/image 4.svg";
 import Briefcase from "../assets/briefcase 1.svg";
 import Home from "../assets/home 1.svg";
 import CustomerData from "../lib/customers";
@@ -13,6 +14,8 @@ import SettingsData from "../lib/settings";
 import style from "./style.module.css";
 
 const Dashboard = () => {
+  const searchRef = useRef() as MutableRefObject<HTMLFormElement>;
+  const users: User = JSON.parse(localStorage.getItem("userInfo"))
   const location = useLocation();
   const splitLocation = location.pathname;
   const toggle = useContext(ToggleContext);
@@ -28,7 +31,10 @@ const Dashboard = () => {
             <img src={Logo} alt="" />
           </div>
           <div className={`relative w-48 hidden md:block md:w-[40%]`}>
-            <input
+            <form action=""
+              ref={searchRef}
+            >
+              <input
               type="text"
               name=""
               id=""
@@ -36,14 +42,16 @@ const Dashboard = () => {
               className={`border-[1px] border-primaryColor p-4 outline-none text-textColor rounded-[8px] h-[40px] bg-transparent text-[10px] md:text-[14px] leading-[16px] w-full font-Work Sans`}
             />
             <div
-              className={`absolute w-[56px] bg-secondaryColor right-0 h-[40px] flex justify-center items-center top-0 rounded-tr-[8px] rounded-br-[8px]`}
+                className={`absolute w-[56px] bg-secondaryColor right-0 h-[40px] flex justify-center items-center top-0 rounded-tr-[8px] rounded-br-[8px]`}
+                onClick={() => searchRef.current.reset()}
             >
               <BsSearch
                 className={`w-[14px] h-[14px] text-white cursor-pointer`}
               />
             </div>
+            </form>
           </div>
-          <div className={`flex justify-between items-center w-[14rem]`}>
+          <div className={`flex justify-between items-center w-[14rem] ml-3`}>
             <a
               href="docs"
               className={`text-primaryColor font-Roboto text-[16px] underline leading-[19px] md:mr-3`}
@@ -51,9 +59,9 @@ const Dashboard = () => {
               Docs
             </a>
             <BsBell className={`text-primaryColor`} />
-            <div className={`w-[48px] h-[48px] rounded-full`}>
+            <div className={`w-[40px] h-[40px] rounded-full`}>
               <img
-                src={UserImg}
+                src={users.profile.avatar}
                 alt=""
                 className={`w-full h-full rounded-full`}
               />
@@ -61,7 +69,7 @@ const Dashboard = () => {
             <p
               className={`text-primaryColor text-[16px] font-[500] leading-[19px] font-Work Sans`}
             >
-              Adedeji
+              {users.profile.firstName}
             </p>
             <MdArrowDropDown
               className={`w-[25px] h-[25px]  text-primaryColor cursor-pointer`}
@@ -78,20 +86,24 @@ const Dashboard = () => {
             />
             <div className={`bg-[rgba(255,255,255,0.05)]`}>
             <div className={`${toggled ? `block` : `hidden`} relative px-4 mt-10 w-full mb-10 md:hidden`}>
-            <input
-              type="text"
-              name=""
-              id=""
-              placeholder="Search for anything"
-              className={`border-[1px] border-primaryColor p-4 outline-none text-textColor rounded-[8px] h-[40px] bg-transparent text-[10px] md:text-[14px] leading-[16px] w-full font-Work Sans`}
-            />
-            <div
-              className={`absolute w-[56px] bg-secondaryColor right-[12px] h-[40px] flex justify-center items-center top-0 rounded-tr-[8px] rounded-br-[8px]`}
-            >
-              <BsSearch
-                className={`w-[14px] h-[14px] text-white cursor-pointer`}
+              <form action=""
+                ref={searchRef}>
+                  <input
+                type="text"
+                name=""
+                id=""
+                placeholder="Search for anything"
+                className={`border-[1px] border-primaryColor p-4 outline-none text-textColor rounded-[8px] h-[40px] bg-transparent text-[10px] md:text-[14px] leading-[16px] w-full font-Work Sans`}
               />
-            </div>
+              <div
+                className={`absolute w-[56px] bg-secondaryColor right-[12px] h-[40px] flex justify-center items-center top-0 rounded-tr-[8px] rounded-br-[8px]`}
+                onClick={() => searchRef.current.reset()}
+              >
+                <BsSearch
+                  className={`w-[14px] h-[14px] text-white cursor-pointer`}
+                />
+              </div>
+              </form>
           </div>
               <div className={`flex items-center my-10 px-4`}>
                 <Link to="/" className={`flex items-center`}>
@@ -102,7 +114,7 @@ const Dashboard = () => {
                     Switch Organization
                   </p>
                   <MdArrowDropDown
-                    className={`w-[25px] h-[25px]  text-primaryColor cursor-pointer`}
+                    className={`w-[25px] h-[25px] text-primaryColor cursor-pointer`}
                   />
                 </Link>
               </div>
