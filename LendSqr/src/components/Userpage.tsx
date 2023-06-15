@@ -8,7 +8,7 @@ const UserPage = () => {
   const navigate = useNavigate();
   const users: User = JSON.parse(localStorage.getItem("userInfo") || "false");
   const [mainCategory, setMainCategory] = useState("General Details");
-  const categories = ["General Details", "Documents", "Bank Details", "Loans", "Savings"];
+  const categories = ["General Details", "Documents", "Bank Details", "Loans", "Savings", "App and System"];
   
   return (
     <section className={`${style._section_width} font-Work Sans mt-[100px] ml-auto bg-[#fbfbfb] relative p-6 md:p-[3rem]`}>

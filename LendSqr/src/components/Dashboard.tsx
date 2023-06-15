@@ -5,6 +5,7 @@ import { BsSearch, BsBell } from "react-icons/bs";
 import { MdArrowDropDown } from "react-icons/md";
 import { User } from "../App";
 import Logo from "../assets/Group.svg";
+import UserImg from "../assets/image 4.svg"
 import Briefcase from "../assets/briefcase 1.svg";
 import Home from "../assets/home 1.svg";
 import CustomerData from "../lib/customers";
@@ -61,7 +62,7 @@ const Dashboard = () => {
             <BsBell className={`text-primaryColor`} />
             <div className={`w-[40px] h-[40px] rounded-full`}>
               <img
-                src={users.profile.avatar}
+                src={users.profile.avatar || UserImg}
                 alt=""
                 className={`w-full h-full rounded-full`}
               />
@@ -69,7 +70,7 @@ const Dashboard = () => {
             <p
               className={`text-primaryColor text-[16px] font-[500] leading-[19px] font-Work Sans`}
             >
-              {users.profile.firstName}
+              {users.profile.firstName || "Adedeji"}
             </p>
             <MdArrowDropDown
               className={`w-[25px] h-[25px]  text-primaryColor cursor-pointer`}
