@@ -7,7 +7,7 @@ import { useState } from "react";
 const UserPage = () => {
   const navigate = useNavigate();
   const users: User = JSON.parse(localStorage.getItem("userInfo") || "false");
-  const [mainCategory, setMainCategory] = useState("General Details")
+  const [mainCategory, setMainCategory] = useState("General Details");
   const categories = ["General Details", "Documents", "Bank Details", "Loans", "Savings"];
   
   return (
@@ -30,39 +30,41 @@ const UserPage = () => {
         <div className={`bg-white border border-[rgba(33, 63, 125, 0.06)] shadow-md rounded-[4px] p-4 py-8 md:py-0 md:pt-8 md:px-6 mb-6`}>
           <div className={`md:grid gap-4 mb-10 grid-flow-col-dense`}>
             <div className={`flex items-center border-b border-[rgba(33,64,125,0.15)] mb-6 pb-6 md:border-b-0 md:border-r md:mb-0 md:pb-0`}>
-            <img src={users.profile.avatar} alt="" className={`w-[60px] h-[60px] rounded-full`} />
-            <div className={`ml-4`}>
-              <p className={`text-[16px] md:text-[22px] leading-[26px] font-[500] text-primaryColor mb-1`}>{users.profile.firstName} {users.profile.lastName}</p>
-              <p className={`text-[14px] leading-[16px] text-textColor`}>{users.accountNumber}</p>
-            </div>
-          </div>
-          <div className={`border-b border-[rgba(33,64,125,0.15)] mb-4 pb-6 md:border-b-0 md:border-r md:mb-0 md:pb-0 md:flex items-center justify-center`}>
-            <div className={``}>
-              <p className={`text-[14px] leading-[16px] font-[500] text-textColor mb-2`}>User's Tier</p>
-              <div className={`w-20 flex justify-between items-center text-pending`}>
-                <BsStarFill className={``} />
-                <BsStar className={``} />
-                <BsStar className={``} />
+              <img src={users.profile.avatar} alt="" className={`w-[60px] h-[60px] rounded-full`} />
+              <div className={`ml-4`}>
+                <p className={`text-[16px] md:text-[22px] leading-[26px] font-[500] text-primaryColor mb-1`}>{users.profile.firstName} {users.profile.lastName}</p>
+                <p className={`text-[14px] leading-[16px] text-textColor`}>{users.accountNumber}</p>
               </div>
             </div>
-          </div>
-          <div className={`mb-6 md:flex items-center justify-center md:mb-0`}>
-            <div className={``}>
-              <p className={`text-[22px] leading-[26px] font-[500] text-primaryColor mb-1`}>{users.profile.currency} {users.accountBalance}</p>
-              <div className={`flex justify-between items-center`}>
-                <p className={`text-[12px] leading-[14px] text-primaryColor`}>{users.profile.bvn}/Providus Bank</p>
+            <div className={`border-b border-[rgba(33,64,125,0.15)] mb-4 pb-6 md:border-b-0 md:border-r md:mb-0 md:pb-0 md:flex items-center justify-center`}>
+              <div className={``}>
+                <p className={`text-[14px] leading-[16px] font-[500] text-textColor mb-2`}>User's Tier</p>
+                <div className={`w-20 flex justify-between items-center text-pending`}>
+                  <BsStarFill className={``} />
+                  <BsStar className={``} />
+                  <BsStar className={``} />
+                </div>
               </div>
             </div>
-          </div>
+            <div className={`mb-6 md:flex items-center justify-center md:mb-0`}>
+              <div className={``}>
+                <p className={`text-[22px] leading-[26px] font-[500] text-primaryColor mb-1`}>{users.profile.currency} {users.accountBalance}</p>
+                <div className={`flex justify-between items-center`}>
+                  <p className={`text-[12px] leading-[14px] text-primaryColor`}>{users.profile.bvn}/Providus Bank</p>
+                </div>
+              </div>
+            </div>
           </div>
           <div className={`grid grid-rows-5 w-[150px] md:text-center md:w-[100%] md:grid-flow-col-dense md:grid-rows-none md:gap-4`}> {
             categories.map(category => {
               return <div
                 id={category}
-                onClick={(e) =>
-                {const target = e.target as Element
+                onClick={(e) => {
+                  const target = e.target as Element
                   if (category === target.id) {
-                    setMainCategory(category)}}}
+                    setMainCategory(category)
+                  }
+                }}
                 key={category}
                 className={`text-[16px] leading-[19px] mb-2 pb-2 md:mb-0 cursor-pointer ${mainCategory === category ? `text-secondaryColor border-b-2 border-secondaryColor` : `text-[rgba(0, 0, 0, 0.8)] border-0`}`}>{category}</div>
             })}
@@ -73,53 +75,53 @@ const UserPage = () => {
           <div className={``}>
             <div className={``}>
               <div>
-              <h1 className={`text-primaryColor font-[500] text-[16px] leading-[19px] mb-8`}>
-                Personal Information
-              </h1>
+                <h1 className={`text-primaryColor font-[500] text-[16px] leading-[19px] mb-8`}>
+                  Personal Information
+                </h1>
               </div>
               <div className={`grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 md:w-[950px] border-b border-[rgba(33,64,125,0.15)] lg:w-[100%]`}>
-              <div className={`grid grid-rows-2 md:gap-4`}>
-                <div className={``}>
-                  <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Full Name</h1>
-                  <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.profile.firstName} {users.profile.lastName}</p>
+                <div className={`grid grid-rows-2 md:gap-4`}>
+                  <div className={``}>
+                    <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Full Name</h1>
+                    <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.profile.firstName} {users.profile.lastName}</p>
+                  </div>
+                  <div className={`mb-4`}>
+                    <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Marital Status</h1>
+                    <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>Single</p>
+                  </div>
                 </div>
-                <div className={`mb-4`}>
-                  <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Marital Status</h1>
-                  <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>Single</p>
+                <div className={`grid grid-rows-2 md:gap-4`}>
+                  <div className={`mb-4`}>
+                    <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Phone Number</h1>
+                    <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.profile.phoneNumber}</p>
+                  </div>
+                  <div className={`mb-4`}>
+                    <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Children</h1>
+                    <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>None</p>
+                  </div>
                 </div>
-              </div>
-              <div className={`grid grid-rows-2 md:gap-4`}>
-                <div className={`mb-4`}>
-                  <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Phone Number</h1>
-                  <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.profile.phoneNumber}</p>
+                <div className={`grid grid-rows-2 md:gap-4`}>
+                  <div className={`mb-4`}>
+                    <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Email Address</h1>
+                    <p className={`w-[174px] font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.email}</p>
+                  </div>
+                  <div className={``}>
+                    <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Type of Residence</h1>
+                    <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>Parent's Apartment</p>
+                  </div>
                 </div>
-                <div className={`mb-4`}>
-                  <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Children</h1>
-                  <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>None</p>
-                </div>
-              </div>
-              <div className={`grid grid-rows-2 md:gap-4`}>
-                <div className={`mb-4`}>
-                  <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Email Address</h1>
-                  <p className={`w-[174px] font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.email}</p>
-                </div>
-                <div className={``}>
-                  <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Type of Residence</h1>
-                  <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>Parent's Apartment</p>
-                </div>
-              </div>
-              <div className={`grid grid-rows-2 md:gap-4`}>
-                <div className={``}>
-                  <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Bvn</h1>
-                  <p className={`font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.profile.bvn}</p>
+                <div className={`grid grid-rows-2 md:gap-4`}>
+                  <div className={``}>
+                    <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Bvn</h1>
+                    <p className={`font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.profile.bvn}</p>
                   </div>
                   <div>
-                <div className={`mb-4`}>
-                  <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Gender</h1>
-                  <p className={`font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.profile.gender}</p>
+                    <div className={`mb-4`}>
+                      <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Gender</h1>
+                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.profile.gender}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              </div>
               </div>
 
               <div className={`my-8`}>
@@ -133,11 +135,11 @@ const UserPage = () => {
                     <div className={``}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Level of Education</h1>
                       <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.education.level}</p>
-                  </div>
-                  <div className={`mb-4`}>
-                    <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Office Email</h1>
-                        <p className={`font-[500] text-[16px] leading-[19px] text-textColor break-words w-[176px]`}>{users.education.officeEmail}</p>
-                  </div>
+                    </div>
+                    <div className={`mb-4`}>
+                      <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Office Email</h1>
+                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor break-words w-[176px]`}>{users.education.officeEmail}</p>
+                    </div>
                   </div>
                   <div className={`grid grid-rows-2 md:gap-4`}>
                     <div className={`mb-4`}>
@@ -146,7 +148,7 @@ const UserPage = () => {
                     </div>
                     <div className={`mb-4`}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Monthly Income</h1>
-                          <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.profile.currency}{users.education.monthlyIncome[0]} - {users.profile.currency}{users.education.monthlyIncome[1]}</p>
+                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.profile.currency}{users.education.monthlyIncome[0]} - {users.profile.currency}{users.education.monthlyIncome[1]}</p>
                     </div>
                   </div>
                   <div className={`grid grid-rows-2 md:gap-4`}>
@@ -156,7 +158,7 @@ const UserPage = () => {
                     </div>
                     <div className={`mb-4`}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Loan Repayment</h1>
-                          <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.education.loanRepayment}</p>
+                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.education.loanRepayment}</p>
                     </div>
                   </div>
                   <div className={`grid grid-cols-1 mb-4 md:mb-0`}>
@@ -179,7 +181,7 @@ const UserPage = () => {
                     <div className={``}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Twitter</h1>
                       <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.socials.twitter}</p>
-                  </div>
+                    </div>
                   </div>
                   <div className={`grid`}>
                     <div className={`mb-4`}>
@@ -196,7 +198,7 @@ const UserPage = () => {
                 </div>
               </div>
 
-               <div className={`my-8`}>
+              <div className={`my-8`}>
                 <div className={`relative`}>
                   <h1 className={`text-primaryColor font-[500] text-[16px] leading-[19px] mb-8`}>
                     Guarantor
@@ -207,7 +209,7 @@ const UserPage = () => {
                     <div className={``}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Full Name</h1>
                       <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.guarantor.firstName} {users.guarantor.lastName}</p>
-                  </div>
+                    </div>
                   </div>
                   <div className={`grid`}>
                     <div className={`mb-4`}>
@@ -229,14 +231,12 @@ const UserPage = () => {
                   </div>
                 </div>
               </div>
-
-
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 export default UserPage;
