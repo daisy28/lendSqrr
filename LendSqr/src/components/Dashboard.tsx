@@ -5,7 +5,7 @@ import { BsSearch, BsBell } from "react-icons/bs";
 import { MdArrowDropDown } from "react-icons/md";
 import { User } from "../App";
 import Logo from "../assets/Group.svg";
-import UserImg from "../assets/image 4.svg"
+import UserImg from "../assets/image 4.svg";
 import Briefcase from "../assets/briefcase 1.svg";
 import Home from "../assets/home 1.svg";
 import CustomerData from "../lib/customers";

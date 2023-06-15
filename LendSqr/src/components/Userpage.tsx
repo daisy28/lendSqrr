@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { BsArrowLeft, BsStarFill, BsStar } from "react-icons/bs";
 import { User } from "../App";
 import style from "./style.module.css";
-import { useState } from "react";
+import UserImg from "../assets/image 4.svg";
 
 const UserPage = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const UserPage = () => {
         <div className={`bg-white border border-[rgba(33, 63, 125, 0.06)] shadow-md rounded-[4px] p-4 py-8 md:py-0 md:pt-8 md:px-6 mb-6`}>
           <div className={`md:grid gap-4 mb-10 grid-flow-col-dense`}>
             <div className={`flex items-center border-b border-[rgba(33,64,125,0.15)] mb-6 pb-6 md:border-b-0 md:border-r md:mb-0 md:pb-0`}>
-              <img src={users.profile.avatar} alt="" className={`w-[60px] h-[60px] rounded-full`} />
+              <img src={users.profile.avatar || UserImg} alt="" className={`w-[60px] h-[60px] rounded-full`} />
               <div className={`ml-4`}>
                 <p className={`text-[16px] md:text-[22px] leading-[26px] font-[500] text-primaryColor mb-1`}>{users.profile.firstName} {users.profile.lastName}</p>
                 <p className={`text-[14px] leading-[16px] text-textColor`}>{users.accountNumber}</p>
@@ -66,7 +67,7 @@ const UserPage = () => {
                   }
                 }}
                 key={category}
-                className={`text-[16px] leading-[19px] mb-2 pb-2 md:mb-0 cursor-pointer ${mainCategory === category ? `text-secondaryColor border-b-2 border-secondaryColor` : `text-[rgba(0, 0, 0, 0.8)] border-0`}`}>{category}</div>
+                className={`text-[16px] leading-[19px] mb-2 pb-2 md:mb-0 cursor-pointer hover:text-secondaryColor ${mainCategory === category ? `text-secondaryColor border-b-2 border-secondaryColor` : `text-[rgba(0, 0, 0, 0.8)] border-0`}`}>{category}</div>
             })}
           </div>
         </div>
