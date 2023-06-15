@@ -14,6 +14,7 @@ import style from "./style.module.css";
 
 const Dashboard = () => {
   const searchRef = useRef() as MutableRefObject<HTMLFormElement>;
+  const searchRefMd = useRef() as MutableRefObject<HTMLFormElement>;
   const users: User = JSON.parse(localStorage.getItem("userInfo") || "false")
   const location = useLocation();
   const splitLocation = location.pathname;
@@ -31,7 +32,7 @@ const Dashboard = () => {
           </div>
           <div className={`relative w-48 hidden md:block md:w-[40%]`}>
             <form action=""
-              ref={searchRef}
+              ref={searchRefMd}
             >
               <input
               type="text"
@@ -42,7 +43,7 @@ const Dashboard = () => {
             />
             <div
                 className={`absolute w-[56px] bg-secondaryColor right-0 h-[40px] flex justify-center items-center top-0 rounded-tr-[8px] rounded-br-[8px]`}
-                onClick={() => searchRef.current.reset()}
+                onClick={() => searchRefMd.current.reset()}
             >
               <BsSearch
                 className={`w-[14px] h-[14px] text-white cursor-pointer`}

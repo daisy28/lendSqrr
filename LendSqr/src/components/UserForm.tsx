@@ -21,7 +21,7 @@ const Form = () => {
     e.preventDefault();
     const filteredUser = users.users.filter((user: User) => {
       const dateInput = new Date(user.createdAt).toDateString();
-      return email === user.email && phone === user.profile.phoneNumber && organization === user.orgName && username === user.userName && date === dateInput;
+      return email.trim() === user.email && phone.trim() === user.profile.phoneNumber && organization === user.orgName && username.trim() === user.userName && date === dateInput;
     });
      console.log(status)
      users.setUsers(filteredUser);

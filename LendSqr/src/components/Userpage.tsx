@@ -77,7 +77,7 @@ const UserPage = () => {
                 Personal Information
               </h1>
               </div>
-              <div className={`grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-8 md:w-[1000px] border-b border-[rgba(33,64,125,0.15)] xl:w-[100%]`}>
+              <div className={`grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 md:w-[950px] border-b border-[rgba(33,64,125,0.15)] lg:w-[100%]`}>
               <div className={`grid grid-rows-2 md:gap-4`}>
                 <div className={``}>
                   <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Full Name</h1>
@@ -108,17 +108,17 @@ const UserPage = () => {
                   <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>Parent's Apartment</p>
                 </div>
               </div>
-              <div className={`grid grid-cols-1 mb-4 md:mb-0`}>
+              <div className={`grid grid-rows-2 md:gap-4`}>
                 <div className={``}>
                   <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Bvn</h1>
                   <p className={`font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.profile.bvn}</p>
-                </div>
-              </div>
-              <div>
+                  </div>
+                  <div>
                 <div className={`mb-4`}>
                   <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Gender</h1>
                   <p className={`font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.profile.gender}</p>
                 </div>
+              </div>
               </div>
               </div>
 
@@ -128,7 +128,7 @@ const UserPage = () => {
                     Education and Employment
                   </h1>
                 </div>
-                <div className={`relative grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 md:w-[1000px] border-b border-[rgba(33,64,125,0.15)] pb-4 xl:w-[100%]`}>
+                <div className={`relative grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 border-b border-[rgba(33,64,125,0.15)] pb-4 lg:w-[100%] md:w-[950px]`}>
                   <div className={`grid grid-rows-2 md:gap-4`}>
                     <div className={``}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Level of Education</h1>
@@ -136,7 +136,7 @@ const UserPage = () => {
                   </div>
                   <div className={`mb-4`}>
                     <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Office Email</h1>
-                        <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.education.officeEmail}</p>
+                        <p className={`font-[500] text-[16px] leading-[19px] text-textColor break-words w-[176px]`}>{users.education.officeEmail}</p>
                   </div>
                   </div>
                   <div className={`grid grid-rows-2 md:gap-4`}>
@@ -174,7 +174,7 @@ const UserPage = () => {
                     Socials
                   </h1>
                 </div>
-                <div className={`relative grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-0 md:w-[1000px] border-b border-[rgba(33,64,125,0.15)] pb-4 xl:w-[100%]`}>
+                <div className={`relative grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-0 md:w-[950px] border-b border-[rgba(33,64,125,0.15)] pb-4 lg:w-[100%]`}>
                   <div className={`grid mb-4`}>
                     <div className={``}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Twitter</h1>
@@ -202,7 +202,7 @@ const UserPage = () => {
                     Guarantor
                   </h1>
                 </div>
-                <div className={`relative grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-0 md:w-[1000px] pb-4 xl:w-[100%]`}>
+                <div className={`relative grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-0 md:w-[950px] pb-4 lg:w-[100%]`}>
                   <div className={`grid mb-4`}>
                     <div className={``}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Full Name</h1>
