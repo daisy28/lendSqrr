@@ -20,7 +20,6 @@ const Dashboard = () => {
   let user;
   typeof getUser === "string" ? user = JSON.parse(getUser) : "";
   const users: User = user;
- 
   const location = useLocation();
   const splitLocation = location.pathname;
   const toggle = useContext(ToggleContext);
@@ -66,7 +65,7 @@ const Dashboard = () => {
             <BsBell className={`text-primaryColor`} />
             <div className={`w-[40px] h-[40px] rounded-full`}>
               <img
-                src={UserImg}
+                src={users ? users.profile.avatar : UserImg}
                 alt=""
                 className={`w-full h-full rounded-full`}
               />
@@ -74,7 +73,7 @@ const Dashboard = () => {
             <p
               className={`text-primaryColor text-[16px] font-[500] leading-[19px] font-Work Sans`}
             >
-              {users.profile.firstName || "Adedeji"}
+              {users ? users.profile.firstName : "Carter"}
             </p>
             <MdArrowDropDown
               className={`w-[25px] h-[25px]  text-primaryColor cursor-pointer`}

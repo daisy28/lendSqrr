@@ -11,21 +11,16 @@ const Form = () => {
   const [date, setDate] = useState(Date);
   const [phone, setPhone] = useState("");
   const [status, setStatus] = useState("");
- 
   const formRef = useRef() as MutableRefObject<HTMLFormElement>;
-  const resetForm = () => {
-    formRef.current.reset();
-  }
-
-   const filterUsers = (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    const filteredUser = users.users.filter((user: User) => {
-      const dateInput = new Date(user.createdAt).toDateString();
-      return email.trim() === user.email && phone.trim() === user.profile.phoneNumber && organization === user.orgName && username.trim() === user.userName && date === dateInput;
-    });
-     console.log(status)
-     users.setUsers(filteredUser);
-  };
+  const filterUsers = (e: { preventDefault: () => void; }) => {
+  e.preventDefault();
+  const filteredUser = users.users.filter((user: User) => {
+    const dateInput = new Date(user.createdAt).toDateString();
+    return email.trim() === user.email && phone.trim() === user.profile.phoneNumber && organization === user.orgName && username.trim() === user.userName && date === dateInput;
+  });
+    console.log(status)
+    users.setUsers(filteredUser);
+};
 
   return (
     <section className={`absolute top-[28px] z-[30]`}>
@@ -173,7 +168,7 @@ const Form = () => {
           <div className={`mb-4 flex`}>
             <button
               className={`w-[98px] text-center border border-[#545f7d] rounded-[8px] font-Work Sans font-[600] text-[14px] leading-[16px] text-textColor py-2`}
-              onClick={resetForm}
+              onClick={() => formRef.current.reset()}
             >
               Reset
             </button>

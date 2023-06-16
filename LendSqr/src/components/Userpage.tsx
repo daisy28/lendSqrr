@@ -34,10 +34,10 @@ const UserPage = () => {
         <div className={`bg-white border border-[rgba(33, 63, 125, 0.06)] shadow-md rounded-[4px] p-4 py-8 md:py-0 md:pt-8 md:px-6 mb-6`}>
           <div className={`md:grid gap-4 mb-10 grid-flow-col-dense`}>
             <div className={`flex items-center border-b border-[rgba(33,64,125,0.15)] mb-6 pb-6 md:border-b-0 md:border-r md:mb-0 md:pb-0`}>
-              <img src={UserImg} alt="" className={`w-[60px] h-[60px] rounded-full`} />
+              <img src={users ? users.profile.avatar : UserImg} alt="" className={`w-[60px] h-[60px] rounded-full`} />
               <div className={`ml-4`}>
-                <p className={`text-[16px] md:text-[22px] leading-[26px] font-[500] text-primaryColor mb-1`}>{users.profile.firstName} {users.profile.lastName}</p>
-                <p className={`text-[14px] leading-[16px] text-textColor`}>{users.accountNumber}</p>
+                <p className={`text-[16px] md:text-[22px] leading-[26px] font-[500] text-primaryColor mb-1`}>{users ? users.profile.firstName : "Carter"} {users ? users.profile.lastName : "Williams"}</p>
+                <p className={`text-[14px] leading-[16px] text-textColor`}>{users ? users.accountNumber : "WE78K9OLFH"}</p>
               </div>
             </div>
             <div className={`border-b border-[rgba(33,64,125,0.15)] mb-4 pb-6 md:border-b-0 md:border-r md:mb-0 md:pb-0 md:flex items-center justify-center`}>
@@ -52,9 +52,9 @@ const UserPage = () => {
             </div>
             <div className={`mb-6 md:flex items-center justify-center md:mb-0`}>
               <div className={``}>
-                <p className={`text-[22px] leading-[26px] font-[500] text-primaryColor mb-1`}>{users.profile.currency} {users.accountBalance}</p>
+                <p className={`text-[22px] leading-[26px] font-[500] text-primaryColor mb-1`}>{users ? users.profile.currency : "NGN"}{users ? users.accountBalance : "100,000"}</p>
                 <div className={`flex justify-between items-center`}>
-                  <p className={`text-[12px] leading-[14px] text-primaryColor`}>{users.profile.bvn}/Providus Bank</p>
+                  <p className={`text-[12px] leading-[14px] text-primaryColor`}>{users ? users.profile.bvn : "0693822073"}/Providus Bank</p>
                 </div>
               </div>
             </div>
@@ -87,7 +87,7 @@ const UserPage = () => {
                 <div className={`grid grid-rows-2 md:gap-4`}>
                   <div className={``}>
                     <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Full Name</h1>
-                    <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.profile.firstName} {users.profile.lastName}</p>
+                    <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users ? users.profile.firstName : "Carter"} {users ? users.profile.lastName : "Williams"}</p>
                   </div>
                   <div className={`mb-4`}>
                     <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Marital Status</h1>
@@ -97,7 +97,7 @@ const UserPage = () => {
                 <div className={`grid grid-rows-2 md:gap-4`}>
                   <div className={`mb-4`}>
                     <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Phone Number</h1>
-                    <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.profile.phoneNumber}</p>
+                    <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users? users.profile.phoneNumber : "+190-678-342 x789"}</p>
                   </div>
                   <div className={`mb-4`}>
                     <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Children</h1>
@@ -107,7 +107,7 @@ const UserPage = () => {
                 <div className={`grid grid-rows-2 md:gap-4`}>
                   <div className={`mb-4`}>
                     <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Email Address</h1>
-                    <p className={`w-[174px] font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.email}</p>
+                    <p className={`w-[174px] font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users ? users.email : "MaverickHayett345@hotmail.com"}</p>
                   </div>
                   <div className={``}>
                     <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Type of Residence</h1>
@@ -117,12 +117,12 @@ const UserPage = () => {
                 <div className={`grid grid-rows-2 md:gap-4`}>
                   <div className={``}>
                     <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Bvn</h1>
-                    <p className={`font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.profile.bvn}</p>
+                    <p className={`font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users ? users.profile.bvn : "WE78K9OLFH"}</p>
                   </div>
                   <div>
                     <div className={`mb-4`}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Gender</h1>
-                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.profile.gender}</p>
+                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users ? users.profile.gender : "Male"}</p>
                     </div>
                   </div>
                 </div>
@@ -138,37 +138,37 @@ const UserPage = () => {
                   <div className={`grid grid-rows-2 md:gap-4`}>
                     <div className={``}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Level of Education</h1>
-                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.education.level}</p>
+                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users ? users.education.level : "Bsc"}</p>
                     </div>
                     <div className={`mb-4`}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Office Email</h1>
-                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor break-words w-[176px]`}>{users.education.officeEmail}</p>
+                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor break-words w-[176px]`}>{users ? users.education.officeEmail: "lendswork@hotmail.com"}</p>
                     </div>
                   </div>
                   <div className={`grid grid-rows-2 md:gap-4`}>
                     <div className={`mb-4`}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Employment Status</h1>
-                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.education.employmentStatus}</p>
+                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users ? users.education.employmentStatus : "Employed"}</p>
                     </div>
                     <div className={`mb-4`}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Monthly Income</h1>
-                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.profile.currency}{users.education.monthlyIncome[0]} - {users.profile.currency}{users.education.monthlyIncome[1]}</p>
+                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users? users.profile.currency : "NGN"}{users ? users.education.monthlyIncome[0] : 5500} - {users? users.profile.currency : "NGN"}{users ? users.education.monthlyIncome[1] : 15500}</p>
                     </div>
                   </div>
                   <div className={`grid grid-rows-2 md:gap-4`}>
                     <div className={`mb-4`}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Sector of Employment</h1>
-                      <p className={`w-[174px] font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.education.sector}</p>
+                      <p className={`w-[174px] font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users ? users.education.sector : "Oil & Gas"}</p>
                     </div>
                     <div className={`mb-4`}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Loan Repayment</h1>
-                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.education.loanRepayment}</p>
+                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users ? users.education.loanRepayment : 6000}</p>
                     </div>
                   </div>
                   <div className={`grid grid-cols-1 mb-4 md:mb-0`}>
                     <div className={``}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Duration of Employment</h1>
-                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.education.duration}</p>
+                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users ? users.education.duration : "4 years"}</p>
                     </div>
                   </div>
                 </div>
@@ -184,19 +184,19 @@ const UserPage = () => {
                   <div className={`grid mb-4`}>
                     <div className={``}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Twitter</h1>
-                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.socials.twitter}</p>
+                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users ? users.socials.twitter : "@MaveHyatte"}</p>
                     </div>
                   </div>
                   <div className={`grid`}>
                     <div className={`mb-4`}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Facebook</h1>
-                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.socials.facebook}</p>
+                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users ? users.socials.facebook : "@Mavee"}</p>
                     </div>
                   </div>
                   <div className={`grid`}>
                     <div className={`mb-4`}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>instagram</h1>
-                      <p className={`w-[174px] font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.socials.instagram}</p>
+                      <p className={`w-[174px] font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users ? users.socials.instagram : "@Mhyatte"}</p>
                     </div>
                   </div>
                 </div>
@@ -212,25 +212,25 @@ const UserPage = () => {
                   <div className={`grid mb-4`}>
                     <div className={``}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Full Name</h1>
-                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.guarantor.firstName} {users.guarantor.lastName}</p>
+                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users ? users.guarantor.firstName : "Wilburn"} {users ? users.guarantor.lastName: "Rice"}</p>
                     </div>
                   </div>
                   <div className={`grid`}>
                     <div className={`mb-4`}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Phone Number</h1>
-                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users.guarantor.phoneNumber}</p>
+                      <p className={`font-[500] text-[16px] leading-[19px] text-textColor`}>{users ? users.guarantor.phoneNumber : "+167-895-999"}</p>
                     </div>
                   </div>
                   <div className={`grid`}>
                     <div className={`mb-4`}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>House Address</h1>
-                      <p className={`w-[174px] font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.guarantor.address}</p>
+                      <p className={`w-[174px] font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users ? users.guarantor.address : "Beverly Hills"}</p>
                     </div>
                   </div>
                   <div className={`grid`}>
                     <div className={`mb-4`}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Gender</h1>
-                      <p className={`w-[174px] font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users.guarantor.gender}</p>
+                      <p className={`w-[174px] font-[500] text-[16px] leading-[19px] text-textColor break-words`}>{users ? users.guarantor.gender : "Male"}</p>
                     </div>
                   </div>
                 </div>
