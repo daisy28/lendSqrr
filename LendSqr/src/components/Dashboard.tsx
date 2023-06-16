@@ -16,7 +16,11 @@ import style from "./style.module.css";
 const Dashboard = () => {
   const searchRef = useRef() as MutableRefObject<HTMLFormElement>;
   const searchRefMd = useRef() as MutableRefObject<HTMLFormElement>;
-  const users: User = JSON.parse(localStorage.getItem("userInfo") || "false")
+  const getUser = localStorage.getItem("userInfo");
+  let user;
+  typeof getUser === "string" ? user = JSON.parse(getUser) : "";
+  const users: User = user;
+ 
   const location = useLocation();
   const splitLocation = location.pathname;
   const toggle = useContext(ToggleContext);
@@ -62,7 +66,7 @@ const Dashboard = () => {
             <BsBell className={`text-primaryColor`} />
             <div className={`w-[40px] h-[40px] rounded-full`}>
               <img
-                src={users.profile.avatar || UserImg}
+                src={UserImg}
                 alt=""
                 className={`w-full h-full rounded-full`}
               />

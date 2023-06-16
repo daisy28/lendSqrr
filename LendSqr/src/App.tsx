@@ -6,56 +6,56 @@ import Dashboard from "./components/Dashboard";
 import Users from "./components/Users";
 import UserPage from "./components/Userpage";
 
-type profile = {
-  address: string;
-  avatar: string;
-  bvn: string;
-  currency: string;
-  firstName: string;
-  gender: string;
-  lastName: string;
-  phoneNumber: string;
+export type profile = {
+  address: string,
+  avatar: string,
+  bvn: string,
+  currency: string,
+  firstName: string,
+  gender: string,
+  lastName: string,
+  phoneNumber: string,
 }
 
-type education = {
-  duration: string;
-  employmentStatus: string;
-  level: string;
+export type education = {
+  duration: string,
+  employmentStatus: string,
+  level: string,
   loanRepayment: string
-  monthlyIncome: string[];
-  officeEmail: string;
-  sector: string;
+  monthlyIncome: string[],
+  officeEmail: string,
+  sector: string,
 }
 
-type socials = {
-  facebook: string;
-  instagram: string;
-  twitter: string;
+export type socials = {
+  facebook: string,
+  instagram: string,
+  twitter: string,
 }
 
-type guarantor = {
-  address: string;
-  firstName: string;
-  gender: string;
-  lastName: string;
-  phoneNumber: string;
+export type guarantor = {
+  address: string,
+  firstName: string,
+  gender: string,
+  lastName: string,
+  phoneNumber: string,
 }
 
 export interface User {
-  accountBalance: string;
-  accountNumber: string;
-  createdAt: Date;
-  email: string;
-  education: education;
-  guarantor: guarantor;
-  id: string;
-  orgName: string;
-  profile: profile;
-  socials: socials;
-  userName: string;
+  accountBalance: string,
+  accountNumber: string,
+  createdAt: Date,
+  email: string,
+  education: education,
+  guarantor: guarantor,
+  id: string,
+  orgName: string,
+  profile: profile,
+  socials: socials,
+  userName: string,
 }
 
-type UserState = {
+export type UserState = {
   setUsers: Dispatch<SetStateAction<never[]>>
 };
 const setState: UserState = {

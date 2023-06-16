@@ -156,16 +156,13 @@ const Users = () => {
                         const target = e.target as Element
                         if (user.id === target.id) {
                           setOpenModal(user.id);
-                          localStorage.setItem("userInfo", JSON.stringify(user))
-                        }
-                      }}>
+                          localStorage.setItem("userInfo", JSON.stringify(user))}}}>
                       <img src={Menu} alt="" id={user.id} />
                       {openModal === user.id && <Modal />}
                     </div>
                   </div>
                 </div>
-              );
-            })}
+              );})}
           </div>
         </div>
         <div>

@@ -7,7 +7,10 @@ import UserImg from "../assets/image 4.svg";
 
 const UserPage = () => {
   const navigate = useNavigate();
-  const users: User = JSON.parse(localStorage.getItem("userInfo") || "false");
+  const getUser = localStorage.getItem("userInfo");
+  let user;
+  typeof getUser === "string" ? user = JSON.parse(getUser) : "";
+  const users: User = user;
   const [mainCategory, setMainCategory] = useState("General Details");
   const categories = ["General Details", "Documents", "Bank Details", "Loans", "Savings", "App and System"];
   
@@ -31,7 +34,7 @@ const UserPage = () => {
         <div className={`bg-white border border-[rgba(33, 63, 125, 0.06)] shadow-md rounded-[4px] p-4 py-8 md:py-0 md:pt-8 md:px-6 mb-6`}>
           <div className={`md:grid gap-4 mb-10 grid-flow-col-dense`}>
             <div className={`flex items-center border-b border-[rgba(33,64,125,0.15)] mb-6 pb-6 md:border-b-0 md:border-r md:mb-0 md:pb-0`}>
-              <img src={users.profile.avatar || UserImg} alt="" className={`w-[60px] h-[60px] rounded-full`} />
+              <img src={UserImg} alt="" className={`w-[60px] h-[60px] rounded-full`} />
               <div className={`ml-4`}>
                 <p className={`text-[16px] md:text-[22px] leading-[26px] font-[500] text-primaryColor mb-1`}>{users.profile.firstName} {users.profile.lastName}</p>
                 <p className={`text-[14px] leading-[16px] text-textColor`}>{users.accountNumber}</p>
