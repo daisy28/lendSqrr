@@ -142,7 +142,7 @@ const Users = () => {
                     ${new Date(user.createdAt).getFullYear() > 2089 && `bg-[rgba(233,179,0,0.1)] text-[#E9B200] text-center rounded-[100px] flex items-center justify-center w-[60%]`}
                     ${new Date(user.createdAt).getFullYear() <= 2089 && `bg-[rgba(57,205,99,0.06)] text-[#39CD62] text-center rounded-[100px] flex items-center justify-center w-[50%]`} 
                     ${new Date(user.createdAt).getFullYear() < 2030 && `bg-[rgba(84,95,125,0.06)] text-[#545F7D] text-center rounded-[100px] flex items-center justify-center w-[55%]`} 
-                    ${new Date(user.createdAt).getFullYear() < 2010 && `bg-[rgba(228,3,59,0.12)] text-[rgb(228,3,59)] text-center rounded-[100px] flex items-center justify-center w-[95px]`} 
+                    ${new Date(user.createdAt).getFullYear() < 2010 && `${style._blacklisted} text-[rgb(228,3,59)] text-center rounded-[100px] flex items-center justify-center w-[95px]`} 
                       `}
                     >
                       {new Date(user.createdAt).getFullYear() < 2010 && `Blacklisted` 

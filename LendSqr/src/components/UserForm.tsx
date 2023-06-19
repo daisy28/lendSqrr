@@ -147,7 +147,7 @@ const Form = () => {
                 name="status"
                 id="status"
                 placeholder=""
-                className={`absolute right-[.8rem] top-[10px] outline-none text-[#213f7d] cursor-pointer z-[20]`}
+                className={`absolute right-[.8rem] top-[10px] outline-none text-[#213f7d] cursor-pointer z-[20] bg-transparent`}
                 onChange={(e) => setStatus(e.target.value)}
               >
                 <option value="" disabled>--Choose--</option>
@@ -161,6 +161,7 @@ const Form = () => {
                 type=""
                 name=""
                 id=""
+                disabled={true}
                 placeholder="select"
               />
             </div>

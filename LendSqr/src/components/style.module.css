@@ -33,6 +33,10 @@
      background-color: #d1cccc;
 }
 
+._blacklisted {
+     background-color: rgba(228, 3, 59, 0.12) !important;
+}
+
 [type="date"]::-webkit-calendar-picker-indicator {
      opacity: 0;
 }
