@@ -1,7 +1,7 @@
 import { useState, useContext, MutableRefObject, useRef } from "react";
 import { UserContext } from "../App";
 import { User } from "../App";
-// import Calendar from "../assets/np_calendar_2080577_000000 1.svg";
+import Calendar from "../assets/np_calendar_2080577_000000 1.svg";
 
 const Form = () => {
   const users = useContext(UserContext);
@@ -40,7 +40,7 @@ const Form = () => {
                 name="organization"
                 id="organization"
                 placeholder=""
-                className={`absolute right-[.8rem] top-[10px] outline-none text-[#213f7d] cursor-pointer z-[20] w-[160px]`}
+                className={`absolute right-[.8rem] top-[10px] outline-none text-[#213f7d] cursor-pointer z-[20] w-[160px] bg-transparent`}
                 onChange={(e) => setOrganization(e.target.value)}
               >
                   <option value="" disabled>--Choose--</option>
@@ -103,18 +103,18 @@ const Form = () => {
             </label>
             <div className={`relative`}>
               <input
-                className={`bg-transparent border border-[#213f7d] rounded-[8px] font-Work Sans text-[14px] leading-[16px] text-textColor opacity-[0.7] p-2 px-3 w-full outline-none mt-1`}
+                className={`bg-transparent border border-[#213f7d] rounded-[8px] font-Work Sans text-[14px] leading-[16px] text-textColor p-2 px-3 w-full outline-none mt-1 relative z-50`}
                 type="date"
                 name=""
                 id="Date"
-                placeholder="Datey"
+                placeholder="Date"
                 onChange={(e) => setDate(new Date(e.target.value).toDateString())}
               />
-              {/* <img
+              <img
                 src={Calendar}
                 alt=""
                 className={`absolute top-[.85rem] right-[14px]`}
-              /> */}
+              />
             </div>
           </div>
           <div className={`relative mb-4`}>

@@ -55,12 +55,12 @@ const Users = () => {
           </p>
         </div>
         <div
-          className={`grid md:grid-cols-2 gap-8 lg:grid-cols-4 xl:grid-cols-4 mb-8`}
+          className={`grid md:grid-cols-2 gap-4 lg:grid-cols-4 mb-8`}
         >
           {UserInfo.map((info) => {
             return (
               <div
-                className={`bg-[#fff] rounded-[4px] shadow-md border-[1px] border-[rgba(125, 125, 125, 0.06)] p-4  w-full hover:bg-[#f3efef] cursor-pointer`}
+                className={`bg-[#fff] rounded-[4px] shadow-md border-[1px] border-[rgba(125, 125, 125, 0.06)] p-4  w-full hover:bg-[#f9f6f6] cursor-pointer`}
                 key={info.title}
               >
                 <img src={info.img} alt="" className={`mb-4`} />

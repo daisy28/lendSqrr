@@ -24,33 +24,34 @@ const UserPage = () => {
           <BsArrowLeft className={`text-[16px] leading-[18.7px] text-textColor`} />
           <p className={`ml-3 text-[16px] leading-[18.7px] text-textColor`}>Back to Users</p>
         </div>
-        <div className={`md:flex justify-between items-center mb-10`}>
-          <h1 className={`text-[18px] md:text-[24px] leading-[28px] font-[500] text-primaryColor mb-4 md:mb-0`}>User Details</h1>
+        <div className={`lg:flex justify-between items-center mb-10`}>
+          <h1 className={`text-[18px] md:text-[24px] leading-[28px] font-[500] text-primaryColor mb-6 lg:mb-0`}>User Details</h1>
           <div className={`flex items-center`}>
-            <button className={`border border-blacklist text-blacklist p-2 font-[600] uppercase text-[10px] md:text-[14px] leading-[16px] text-center tracking-[.1rem] rounded-[8px] md:px-4`}>Blacklist user</button>
-            <button className={`border border-secondaryColor text-secondaryColor p-2 font-[600] uppercase text-[10px] md:text-[14px] leading-[16px] text-center tracking-[.1rem] rounded-[8px] ml-4 md:px-4`}>Activate user</button>
+            <button className={`border border-blacklist text-blacklist p-2 font-[600] uppercase text-[10px] md:text-[14px] leading-[16px] text-center tracking-[.1rem] rounded-[8px] md:p-4`}>Blacklist user</button>
+            <button className={`border border-secondaryColor text-secondaryColor p-2 font-[600] uppercase text-[10px] md:text-[14px] leading-[16px] text-center tracking-[.1rem] rounded-[8px] ml-4 md:p-4`}>Activate user</button>
           </div>
         </div>
         <div className={`bg-white border border-[rgba(33, 63, 125, 0.06)] shadow-md rounded-[4px] p-4 py-8 md:py-0 md:pt-8 md:px-6 mb-6`}>
-          <div className={`md:grid gap-4 mb-10 grid-flow-col-dense`}>
-            <div className={`flex items-center border-b border-[rgba(33,64,125,0.15)] mb-6 pb-6 md:border-b-0 md:border-r md:mb-0 md:pb-0`}>
+          <div className={`lg:grid gap-4 mb-10 grid-flow-col-dense lg:w-[550px] lg:gap-0`}>
+            <div className={`flex items-center border-b border-[rgba(33,64,125,0.15)] mb-6 pb-6 lg:border-b-0 lg:border-r lg:mb-0 lg:pb-0`}>
               <img src={users ? users.profile.avatar : UserImg} alt="" className={`w-[60px] h-[60px] rounded-full`} />
-              <div className={`ml-4`}>
+              <div className={`ml-6`}>
                 <p className={`text-[16px] md:text-[22px] leading-[26px] font-[500] text-primaryColor mb-1`}>{users ? users.profile.firstName : "Carter"} {users ? users.profile.lastName : "Williams"}</p>
                 <p className={`text-[14px] leading-[16px] text-textColor`}>{users ? users.accountNumber : "WE78K9OLFH"}</p>
               </div>
             </div>
-            <div className={`border-b border-[rgba(33,64,125,0.15)] mb-4 pb-6 md:border-b-0 md:border-r md:mb-0 md:pb-0 md:flex items-center justify-center`}>
+            <div className={`md:flex justify-between items-start w-[250px] lg:w-[100%]`}>
+              <div className={`border-b border-[rgba(33,64,125,0.15)] mb-4 pb-6 lg:border-b-0 lg:border-r lg:mb-0 lg:pb-0 lg:flex items-center justify-center`}>
               <div className={``}>
                 <p className={`text-[14px] leading-[16px] font-[500] text-textColor mb-2`}>User's Tier</p>
-                <div className={`w-20 flex justify-between items-center text-pending`}>
+                <div className={`w-14 flex justify-between items-center text-pending`}>
                   <BsStarFill className={``} />
                   <BsStar className={``} />
                   <BsStar className={``} />
                 </div>
               </div>
             </div>
-            <div className={`mb-6 md:flex items-center justify-center md:mb-0`}>
+            <div className={`mb-6 lg:flex items-center justify-center lg:mb-0`}>
               <div className={``}>
                 <p className={`text-[22px] leading-[26px] font-[500] text-primaryColor mb-1`}>{users ? users.profile.currency : "NGN"}{users ? users.accountBalance : "100,000"}</p>
                 <div className={`flex justify-between items-center`}>
@@ -58,8 +59,10 @@ const UserPage = () => {
                 </div>
               </div>
             </div>
+            </div>
+            
           </div>
-          <div className={`grid grid-rows-5 w-[150px] md:text-center md:w-[100%] md:grid-flow-col-dense md:grid-rows-none md:gap-4`}> {
+          <div className={`grid grid-rows-5 gap-y-3 w-[150px] text-center lg:w-[100%] lg:grid-flow-col-dense lg:grid-rows-none lg:gap-4`}> {
             categories.map(category => {
               return <div
                 id={category}
@@ -70,7 +73,7 @@ const UserPage = () => {
                   }
                 }}
                 key={category}
-                className={`text-[16px] leading-[19px] mb-2 pb-2 md:mb-0 cursor-pointer hover:text-secondaryColor ${mainCategory === category ? `text-secondaryColor border-b-2 border-secondaryColor` : `text-[rgba(0, 0, 0, 0.8)] border-0`}`}>{category}</div>
+                className={`text-[16px] rounded-[8px] leading-[19px] mb-2 pb-2 md:mb-0 cursor-pointer hover:text-secondaryColor ${mainCategory === category ? `text-secondaryColor border-b-2 border-secondaryColor` : `text-[rgba(0, 0, 0, 0.8)] border-0`}`}>{category}</div>
             })}
           </div>
         </div>
@@ -83,7 +86,7 @@ const UserPage = () => {
                   Personal Information
                 </h1>
               </div>
-              <div className={`grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 md:w-[950px] border-b border-[rgba(33,64,125,0.15)] lg:w-[100%]`}>
+              <div className={`grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 md:w-[950px] border-b border-[rgba(33,64,125,0.15)] xl:w-[100%]`}>
                 <div className={`grid grid-rows-2 md:gap-4`}>
                   <div className={``}>
                     <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Full Name</h1>
@@ -134,7 +137,7 @@ const UserPage = () => {
                     Education and Employment
                   </h1>
                 </div>
-                <div className={`relative grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 border-b border-[rgba(33,64,125,0.15)] pb-4 lg:w-[100%] md:w-[950px]`}>
+                <div className={`relative grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 border-b border-[rgba(33,64,125,0.15)] pb-4 xl:w-[100%] md:w-[950px]`}>
                   <div className={`grid grid-rows-2 md:gap-4`}>
                     <div className={``}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Level of Education</h1>
@@ -180,7 +183,7 @@ const UserPage = () => {
                     Socials
                   </h1>
                 </div>
-                <div className={`relative grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-0 md:w-[950px] border-b border-[rgba(33,64,125,0.15)] pb-4 lg:w-[100%]`}>
+                <div className={`relative grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-0 md:w-[950px] border-b border-[rgba(33,64,125,0.15)] pb-4 xl:w-[100%]`}>
                   <div className={`grid mb-4`}>
                     <div className={``}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Twitter</h1>
@@ -208,7 +211,7 @@ const UserPage = () => {
                     Guarantor
                   </h1>
                 </div>
-                <div className={`relative grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-0 md:w-[950px] pb-4 lg:w-[100%]`}>
+                <div className={`relative grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-0 md:w-[950px] pb-4 xl:w-[100%]`}>
                   <div className={`grid mb-4`}>
                     <div className={``}>
                       <h1 className={`text-[12px] leading-[14px] text-textColor uppercase mb-2`}>Full Name</h1>
