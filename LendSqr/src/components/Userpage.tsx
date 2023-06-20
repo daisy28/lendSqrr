@@ -33,15 +33,15 @@ const UserPage = () => {
         </div>
         <div className={`bg-white border border-[rgba(33, 63, 125, 0.06)] shadow-md rounded-[4px] p-4 py-8 md:py-0 md:pt-8 md:px-6 mb-6`}>
           <div className={`lg:grid gap-4 mb-10 grid-flow-col-dense lg:w-[550px] lg:gap-0`}>
-            <div className={`flex items-center border-b border-[rgba(33,64,125,0.15)] mb-6 pb-6 lg:border-b-0 lg:border-r lg:mb-0 lg:pb-0`}>
+            <div className={`flex items-center border-b border-[rgba(33,64,125,0.15)] mb-6 pb-6 lg:border-b-0 lg:border-r lg:mb-0 lg:pb-0 lg:w-[250px]`}>
               <img src={users ? users.profile.avatar : UserImg} alt="" className={`w-[60px] h-[60px] rounded-full`} />
               <div className={`ml-6`}>
                 <p className={`text-[16px] md:text-[22px] leading-[26px] font-[500] text-primaryColor mb-1`}>{users ? users.profile.firstName : "Carter"} {users ? users.profile.lastName : "Williams"}</p>
                 <p className={`text-[14px] leading-[16px] text-textColor`}>{users ? users.accountNumber : "WE78K9OLFH"}</p>
               </div>
             </div>
-            <div className={`md:flex justify-between items-start w-[250px] lg:w-[100%]`}>
-              <div className={`border-b border-[rgba(33,64,125,0.15)] mb-4 pb-6 lg:border-b-0 lg:border-r lg:mb-0 lg:pb-0 lg:flex items-center justify-center`}>
+            <div className={`md:flex justify-start items-start lg:w-[100%] md:border-b border-[rgba(33,64,125,0.15)] lg:border-b-0`}>
+              <div className={`border-b border-[rgba(33,64,125,0.15)] mb-4 pb-6 md:border-b-0 lg:border-r md:mb-0 lg:pb-0 lg:flex items-center justify-center md:mr-8 lg:w-[130px] lg:h-[60px]`}>
               <div className={``}>
                 <p className={`text-[14px] leading-[16px] font-[500] text-textColor mb-2`}>User's Tier</p>
                 <div className={`w-14 flex justify-between items-center text-pending`}>
@@ -51,11 +51,11 @@ const UserPage = () => {
                 </div>
               </div>
             </div>
-            <div className={`mb-6 lg:flex items-center justify-center lg:mb-0`}>
+            <div className={`mb-6 lg:flex items-center justify-center lg:mb-0 lg:w-[144px]`}>
               <div className={``}>
                 <p className={`text-[22px] leading-[26px] font-[500] text-primaryColor mb-1`}>{users ? users.profile.currency : "NGN"}{users ? users.accountBalance : "100,000"}</p>
                 <div className={`flex justify-between items-center`}>
-                  <p className={`text-[12px] leading-[14px] text-primaryColor`}>{users ? users.profile.bvn : "0693822073"}/Providus Bank</p>
+                  <p className={`text-[12px] leading-[14px] text-primaryColor`}>{users ? users.profile.bvn : "0693822073"}/Access Bank</p>
                 </div>
               </div>
             </div>
@@ -73,7 +73,7 @@ const UserPage = () => {
                   }
                 }}
                 key={category}
-                className={`text-[16px] rounded-[8px] leading-[19px] mb-2 pb-2 md:mb-0 cursor-pointer hover:text-secondaryColor ${mainCategory === category ? `text-secondaryColor border-b-2 border-secondaryColor` : `text-[rgba(0, 0, 0, 0.8)] border-0`}`}>{category}</div>
+                className={`text-[16px] rounded-[6px] leading-[19px] mb-2 pb-2 lg:mb-0 cursor-pointer hover:text-secondaryColor ${mainCategory === category ? `text-secondaryColor border-b-2 border-secondaryColor` : `text-[rgba(0, 0, 0, 0.8)] border-0`}`}>{category}</div>
             })}
           </div>
         </div>

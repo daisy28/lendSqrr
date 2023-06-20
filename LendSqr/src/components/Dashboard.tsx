@@ -27,7 +27,7 @@ const Dashboard = () => {
 
   return (
     <section className={``}>
-      <div>
+      <div className={`${toggled ? `h-[100vh] bg-[#524d4d63] fixed bottom-0 top-[100px] w-[100%] z-20 ` : `h-0 bg-transparent`}`}>
         <div
           className={`bg-[#fff] h-[100px] p-4 flex justify-between items-center shadow-sm fixed w-full right-0 top-0 left-0 z-40`}
         >
