@@ -31,7 +31,6 @@ const Users = () => {
       setCurrentPage(currentPage - 1);
     }
   };
-
   type Header = { name: string, id: string };
   const headers = [
     { name: "Organization", id: "0" },
@@ -95,8 +94,8 @@ const Users = () => {
                     <img src={Icon} alt=""
                       className={`ml-3 cursor-pointer`}
                       id={header.id}
-                      onClick={(e) =>
-                      {const target = e.target as Element
+                      onClick={(e) => {
+                        const target = e.target as Element
                         if (header.id === target.id) {
                           setForm(header.id)
                           setOpenForm(prevState => !prevState)}}}
@@ -157,7 +156,7 @@ const Users = () => {
                         if (user.id === target.id) {
                           setOpenModal(user.id);
                           localStorage.setItem("userInfo", JSON.stringify(user))}}}>
-                      <img src={Menu} alt="" id={user.id} />
+                      <img src={Menu} alt={user.id} id={user.id} />
                       {openModal === user.id && <Modal />}
                     </div>
                   </div>

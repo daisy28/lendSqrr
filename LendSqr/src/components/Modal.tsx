@@ -14,7 +14,7 @@ const Modal = () => {
       <div className={`flex items-center mb-6 cursor-pointer`}>
         <img src={Eye} alt="" />
           <div className={`ml-3 text-textColor font-Work Sans font-[500] text-[14px] leading-[16px]`}
-            onClick={() => navigate("user-page") }
+            onClick={() => navigate("user-page")}
         >View Details
         </div>
       </div>

@@ -4,11 +4,12 @@ import Logo from "../assets/Group.svg";
 import HeroImg from "../assets/pablo-sign-in 1.svg";
 
 const Login = () => {
-     const [showPassword, setShowPassword] = useState(false);
-     const navigate = useNavigate();
-     const login = ():void => {
-          return navigate("/dashboard");
-     }
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  const login = () => {
+    return navigate("/dashboard");
+  }
+
   return (
     <section className={`p-8 lg:p-[5rem]`}>
       <div className={`mb-[5rem] md:mb-[5rem]`}>
@@ -39,6 +40,7 @@ const Login = () => {
                 name="email"
                 id="email"
                 placeholder="Email"
+                required={true}
               />
             </div>
 
@@ -49,6 +51,7 @@ const Login = () => {
                 name="password"
                 id="password"
                 placeholder="Password"
+                required={true}
               />
               <p
                 className={`absolute text-[12px] font-[600] leading-[16px] text-secondaryColor uppercase right-[10px] top-[18px] font-face-an tracking-[.1rem] cursor-pointer`}

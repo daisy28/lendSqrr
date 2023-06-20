@@ -20,8 +20,8 @@
 }
 
 ._content::-webkit-scrollbar {
-     height: 10px;
-     width: 10px;
+     height: 8px;
+     width: 8px;
 }
 
 ._content::-webkit-scrollbar-track {
@@ -29,7 +29,7 @@
 }
 
 ._content::-webkit-scrollbar-thumb {
-     border-radius: 3px;
+     border-radius: 4px;
      background-color: #d1cccc;
 }
 
