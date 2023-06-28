@@ -27,8 +27,8 @@ const UserPage = () => {
         <div className={`lg:flex justify-between items-center mb-10`}>
           <h1 className={`text-[18px] md:text-[24px] leading-[28px] font-[500] text-primaryColor mb-6 lg:mb-0`}>User Details</h1>
           <div className={`flex items-center`}>
-            <button className={`border border-blacklist text-blacklist p-2 font-[600] uppercase text-[10px] md:text-[14px] leading-[16px] text-center tracking-[.1rem] rounded-[8px] md:p-4`}>Blacklist user</button>
-            <button className={`border border-secondaryColor text-secondaryColor p-2 font-[600] uppercase text-[10px] md:text-[14px] leading-[16px] text-center tracking-[.1rem] rounded-[8px] ml-4 md:p-4`}>Activate user</button>
+            <button className={`border border-blacklist text-blacklist p-2 font-[600] uppercase text-[10px] md:text-[14px] leading-[16px] text-center tracking-[.1rem] rounded-[8px] md:p-4 hover:bg-blacklist hover:text-white`}>Blacklist user</button>
+            <button className={`border border-secondaryColor text-secondaryColor p-2 font-[600] uppercase text-[10px] md:text-[14px] leading-[16px] text-center tracking-[.1rem] rounded-[8px] ml-4 md:p-4 hover:bg-secondaryColor hover:text-white`}>Activate user</button>
           </div>
         </div>
         <div className={`bg-white border border-[rgba(33, 63, 125, 0.06)] shadow-md rounded-[4px] p-4 py-8 md:py-0 md:pt-8 md:px-6 mb-6`}>
