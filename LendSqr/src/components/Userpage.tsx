@@ -73,7 +73,7 @@ const UserPage = () => {
                   }
                 }}
                 key={category}
-                className={`text-[16px] rounded-[6px] leading-[19px] mb-2 pb-2 lg:mb-0 cursor-pointer hover:text-secondaryColor ${mainCategory === category ? `text-secondaryColor border-b-2 border-secondaryColor` : `text-[rgba(0, 0, 0, 0.8)] border-0`}`}>{category}</div>
+                className={`text-[16px] rounded-[4px] leading-[19px] mb-2 pb-2 lg:mb-0 cursor-pointer hover:text-secondaryColor ${mainCategory === category ? `text-secondaryColor border-b-2 border-secondaryColor` : `text-[rgba(0, 0, 0, 0.8)] border-0`}`}>{category}</div>
             })}
           </div>
         </div>
