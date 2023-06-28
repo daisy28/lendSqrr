@@ -168,13 +168,13 @@ const Form = () => {
           </div>
           <div className={`mb-4 flex`}>
             <button
-              className={`w-[98px] text-center border border-[#545f7d] rounded-[8px] font-Work Sans font-[600] text-[14px] leading-[16px] text-textColor py-2`}
+              className={`w-[98px] text-center border border-[#545f7d] rounded-[8px] font-Work Sans font-[600] text-[14px] leading-[16px] text-textColor py-2 hover:bg-textColor hover:text-white`}
               onClick={() => formRef.current.reset()}
             >
               Reset
             </button>
             <button
-              className={`w-[98px] text-center bg-secondaryColor rounded-[8px] font-Work Sans font-[600] text-[14px] leading-[16px] text-white py-2 ml-3`}
+              className={`w-[98px] text-center bg-secondaryColor rounded-[8px] font-Work Sans font-[600] text-[14px] leading-[16px] text-white py-2 ml-3 hover:bg-[#14adad]`}
             >
               Filter
             </button>
